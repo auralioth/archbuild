@@ -1,0 +1,37 @@
+_pkgname=dae
+pkgname=$_pkgname-git
+pkgver=0.5.1.r0.ge04b16f
+pkgrel=1
+pkgdesc="A Linux lightweight and high-performance transparent proxy solution based on eBPF."
+arch=(x86_64)
+url="https://github.com/daeuniverse/dae"
+license=('AGPL')
+makedepends=(clang llvm go)
+provides=($_pkgname)
+conflicts=($_pkgname)
+depends=('glibc')
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "${srcdir}"/"${_pkgname}"/
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+	cd "${srcdir}"/"${_pkgname}"/
+	git submodule update --init
+	make GOFLAGS="-buildvcs=false" \
+		CFLAGS="-D__REMOVE_BPF_PRINTK" \
+		CC=clang
+}
+
+package() {
+	depends=(
+		dae-geoip
+		dae-geosite
+	)
+	cd "$srcdir/$_pkgname"
+	install -Dm755 "dae" "$pkgdir/usr/bin/dae"
+	install -Dm644 "install/dae.service" "$pkgdir/usr/lib/systemd/system/dae.service"
+}

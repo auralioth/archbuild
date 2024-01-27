@@ -1,0 +1,46 @@
+pkgname=daed-git
+_pkgname=daed
+pkgver=0.3.3.p1.r79.g54bc339
+pkgrel=1
+pkgdesc="A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core)."
+url="https://github.com/daeuniverse/daed"
+arch=('x86_64')
+license=('AGPL MIT')
+makedepends=('git' 'pnpm' 'clang' 'go')
+provides=('daed')
+conflicts=('daed')
+source=("git+https://github.com/daeuniverse/daed.git")
+sha256sums=('SKIP')
+options=(!debug)
+
+pkgver() {
+	cd "$srcdir/$_pkgname"
+	(
+		set -o pipefail
+		git describe --long --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	)
+}
+
+prepare() {
+	cd "$srcdir/$_pkgname"
+	git submodule update --init --recursive
+}
+
+build() {
+	export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+	export CFLAGS="-fno-stack-protector"
+	cd "$srcdir/$_pkgname"
+	make VERSION="unstable-$pkgver"
+}
+
+package() {
+	depends=(
+		dae-geoip
+		dae-geosite
+	)
+	cd "$srcdir/$_pkgname"
+	install -Dm755 "${_pkgname}" -t "${pkgdir}/usr/bin/"
+	install -Dm644 "install/${_pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system/"
+	install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}

@@ -1,0 +1,28 @@
+_pkgbase=adobe-source-han-sans
+pkgbase=$_pkgbase-fonts
+pkgname=$_pkgbase-otc-fonts
+pkgver=2.004R
+pkgrel=1
+pkgdesc='Adobe Source Han Sans - A set of Pan-CJK fonts designed to complement Source Sans Pro'
+arch=('any')
+license=('custom:SIL')
+url='https://github.com/adobe-fonts/source-han-sans'
+source=("git+${url}.git"
+	"https://github.com/adobe-fonts/source-han-sans/releases/download/${pkgver}/SourceHanSansOTC.zip")
+sha512sums=('SKIP'
+	'SKIP')
+
+pkgver() {
+	cd source-han-sans
+	git tag --sort=-version:refname | head -n 1
+}
+
+package() {
+	cd "$srcdir/OTC"
+
+	# Prepare destination directory
+	install -dm755 "$pkgdir/usr/share/fonts/adobe-source-han-sans"
+
+	# Install fonts
+	install -m644 * "$pkgdir/usr/share/fonts/adobe-source-han-sans"
+}

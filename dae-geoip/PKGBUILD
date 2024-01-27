@@ -1,0 +1,20 @@
+pkgname=dae-geoip
+pkgver=202401250041
+pkgrel=1
+pkgdesc="GeoIP List for dae"
+arch=('any')
+url="https://github.com/v2fly/geoip"
+license=('CCPL:by-sa')
+source=("git+${url}.git"
+	"geoip-$pkgver.dat::https://github.com/v2fly/geoip/releases/download/$pkgver/geoip.dat")
+sha512sums=('SKIP'
+	'SKIP')
+
+pkgver() {
+	cd geoip
+	git tag --sort=-version:refname | head -n 1
+}
+
+package() {
+	install -Dm644 geoip-$pkgver.dat "$pkgdir"/usr/share/dae/geoip.dat
+}

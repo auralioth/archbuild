@@ -1,0 +1,29 @@
+name: 'Build AUR Package'
+description: 'Build an ArchLinux package in Docker container'
+branding:
+  icon: user-check
+  color: gray-dark
+inputs:
+  pkg_name:
+    description: 'ArchLinux package name to build'
+    required: true
+    default: ""
+  repo_full:
+    description: 'GitHub repository'
+    required: true
+    default: ""
+  preinstallPkgs:
+    description: 'packages need install before build, separated by space'
+    required: false
+    default: ""
+outputs:
+  status:
+    description: 'Update status(13 for no update)'
+  asset:
+    description: 'Newest package asset'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.pkg_name }}
+    - ${{ inputs.repo_full }}
