@@ -9,8 +9,7 @@ license=('AGPL')
 makedepends=(clang llvm go)
 provides=($_pkgname)
 conflicts=($_pkgname)
-depends=('glibc'
-	'dae-rules-dat')
+depends=('glibc')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -28,6 +27,7 @@ build() {
 }
 
 package() {
+	depends=(dae-rules-dat)
 	cd "$srcdir/$_pkgname"
 	install -Dm755 "dae" "$pkgdir/usr/bin/dae"
 	install -Dm644 "install/dae.service" "$pkgdir/usr/lib/systemd/system/dae.service"
