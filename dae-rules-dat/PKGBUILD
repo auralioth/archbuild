@@ -1,0 +1,21 @@
+pkgname=dae-rules-dat
+_pkgname=v2ray-rules-dat
+pkgver=202401250041
+pkgrel=1
+pkgdesc="Route rules for dae"
+arch=('any')
+url="https://github.com/Loyalsoldier/v2ray-rules-dat"
+license=('GPL-3.0')
+source=("git+${url}.git#branch=release")
+sha512sums=('SKIP')
+
+pkgver() {
+	cd ${_pkgname}
+	git tag --sort=-version:refname | head -n 1
+}
+
+package() {
+	cd "$srcdir/${_pkgname}"
+	install -Dm644 geoip.dat "$pkgdir"/usr/share/dae/geoip.dat
+	install -Dm644 geosite.dat "$pkgdir"/usr/share/dae/geosite.dat
+}

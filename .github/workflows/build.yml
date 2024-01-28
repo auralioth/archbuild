@@ -17,12 +17,9 @@ jobs:
           - adobe-source-han-sans-otc-fonts
           - adobe-source-han-serif-otc-fonts
           - noto-fonts-all
-          - rofi-lbonn-wayland-only-git
           - clash-meta-alpha-git
           - dae-git
-          - dae-geoip
-          - dae-geosite
-          - nerdfix
+          - dae-rules-dat
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

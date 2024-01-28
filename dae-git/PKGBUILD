@@ -9,7 +9,8 @@ license=('AGPL')
 makedepends=(clang llvm go)
 provides=($_pkgname)
 conflicts=($_pkgname)
-depends=('glibc')
+depends=('glibc'
+	'dae-rules-dat')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -21,16 +22,12 @@ pkgver() {
 build() {
 	cd "${srcdir}"/"${_pkgname}"/
 	git submodule update --init
-	make GOFLAGS="-buildvcs=false" \
-		CFLAGS="-D__REMOVE_BPF_PRINTK" \
-		CC=clang
+	export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+	export CFLAGS="-fno-stack-protector"
+	make
 }
 
 package() {
-	depends=(
-		dae-geoip
-		dae-geosite
-	)
 	cd "$srcdir/$_pkgname"
 	install -Dm755 "dae" "$pkgdir/usr/bin/dae"
 	install -Dm644 "install/dae.service" "$pkgdir/usr/lib/systemd/system/dae.service"
