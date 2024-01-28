@@ -14,16 +14,14 @@ jobs:
       fail-fast: false
       matrix:
         pkgs:
-          - noto-fonts-git
           - adobe-source-han-sans-otc-fonts
           - adobe-source-han-serif-otc-fonts
+          - noto-fonts-all
           - dae-git
           - rofi-lbonn-wayland-only-git
-          - hyprpicker-git
           - clash-meta-alpha-git
           - dae-geoip
           - dae-geosite
-          - daed-git
           - nerdfix
     steps:
       - name: Checkout repository

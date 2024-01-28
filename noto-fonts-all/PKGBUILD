@@ -1,0 +1,24 @@
+pkgname=noto-fonts-all
+pkgver=23.12.1
+pkgrel=1
+pkgdesc='Google Noto All TTF fonts'
+arch=(any)
+url='https://fonts.google.com/noto'
+license=(custom:SIL)
+source=("git+${url}.git"
+	"$pkgname-$pkgver.tar.gz::https://github.com/notofonts/notofonts.github.io/archive/noto-monthly-release-$pkgver.tar.gz")
+sha256sums=('SKIP'
+	'SKIP')
+
+pkgver() {
+	cd notofonts.github.io
+	git tag --sort=-version:refname | head -n 1 | sed 's/.*-//'
+}
+
+package() {
+	provides=(ttf-font)
+
+	cd notofonts.github.io-noto-monthly-release-$pkgver
+	install -Dm644 fonts/*/hinted/ttf/*.tt[fc] -t "$pkgdir"/usr/share/fonts/noto
+	install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/noto-fonts
+}

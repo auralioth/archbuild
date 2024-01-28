@@ -1,26 +1,16 @@
 _pkgbase=adobe-source-han-serif
 pkgbase=$_pkgbase-fonts
 pkgname=$_pkgbase-otc-fonts
-pkgver=2.002R
+pkgver=2.002
 pkgrel=1
 pkgdesc="Adobe Source Han Serif - Pan-CJK OpenType/CFF Collection fonts"
 arch=('any')
 license=('custom:SIL')
 url='https://github.com/adobe-fonts/source-han-serif'
 source=("git+${url}.git"
-	"$pkgbase-$pkgver.tar.gz::https://github.com/adobe-fonts/source-han-serif/archive/${pkgver}.tar.gz")
+	"https://github.com/adobe-fonts/source-han-serif/releases/download/${pkgver}/03_SourceHanSerifOTC.zip")
 sha512sums=('SKIP'
 	'SKIP')
-
-_otc=(
-	SourceHanSerif-Bold.ttc
-	SourceHanSerif-ExtraLight.ttc
-	SourceHanSerif-Heavy.ttc
-	SourceHanSerif-Light.ttc
-	SourceHanSerif-Medium.ttc
-	SourceHanSerif-SemiBold.ttc
-	SourceHanSerif-Regular.ttc
-)
 
 pkgver() {
 	cd source-han-serif
@@ -28,15 +18,11 @@ pkgver() {
 }
 
 package() {
-	cd "$srcdir/source-han-serif-${pkgver}"
-	fonts=(${_otc[@]})
-	cd OTC
+	cd "$srcdir/OTC"
 
 	# Prepare destination directory
 	install -dm755 "$pkgdir/usr/share/fonts/adobe-source-han-serif"
 
 	# Install fonts
-	for font in "${fonts[@]}"; do
-		install -m644 "$font" "$pkgdir/usr/share/fonts/adobe-source-han-serif"
-	done
+	install -m644 * "$pkgdir/usr/share/fonts/adobe-source-han-serif"
 }
