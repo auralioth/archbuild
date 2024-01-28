@@ -1,6 +1,6 @@
 pkgname=noto-fonts-all
 _pkgname=notofonts
-pkgver=r936.53bf504
+pkgver=24.1.1
 pkgrel=1
 pkgdesc='Google Noto TTF fonts(include additional variants)'
 arch=(any)
