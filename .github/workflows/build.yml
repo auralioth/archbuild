@@ -15,11 +15,11 @@ jobs:
       matrix:
         pkgs:
           - adobe-source-han-sans-otc-fonts
-          - adobe-source-han-serif-otc-fonts
-          - noto-fonts-all
-          - clash-meta-alpha-git
-          - dae-git
-          - dae-rules-dat
+          # - adobe-source-han-serif-otc-fonts
+          # - noto-fonts-all
+          # - clash-meta-alpha-git
+          # - dae-git
+          # - dae-rules-dat
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
