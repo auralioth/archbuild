@@ -1,0 +1,34 @@
+pkgname=ctex-windows-fonts
+pkgver=1.0
+pkgrel=1
+pkgdesc="ctex-fontset-windows.def预设字体，中易字库+微软雅黑"
+arch=("any")
+url="https://github.com/auryouth/archbuild"
+license=("custom:free")
+source=(
+	"msyh.ttc::${url}/raw/main/$pkgname/msyh.ttc"
+	"msyhl.ttc::${url}/raw/main/$pkgname/msyhl.ttc"
+	"msyhbd.ttc::${url}/raw/main/$pkgname/msyhbd.ttc"
+	"simsun.ttc::${url}/raw/main/$pkgname/simsun.ttc"
+	"simsunb.ttf::${url}/raw/main/$pkgname/simsunb.ttf"
+	"simhei.ttf::${url}/raw/main/$pkgname/simhei.ttf"
+	"simfang.ttf::${url}/raw/main/$pkgname/simfang.ttf"
+	"simkai.ttf::${url}/raw/main/$pkgname/simkai.ttf"
+	"simyou.ttf::${url}/raw/main/$pkgname/simyou.ttf"
+	"simli.ttf::${url}/raw/main/$pkgname/simli.ttf"
+)
+sha256sums=('3084f1f88369af6bf9989c909024164d953d1e38d08734f05f28ef24b2f9d577'
+	'f25f39a6d56ec6d1b356254dd776219d71b7e6f3584b3ec1b83aab0ceb08881a'
+	'519309b7ab0479c4dc3ace5e291de5a8702175be5586e165bc810267bd4619a5'
+	'05068fa1acae212120dcc7e98c884b174a6eca252a636b4b64030235473ec27e'
+	'd75bef7991a4acc6aec7be5cea3698d97d7a7fd791050a64a8cb926731dfcfa2'
+	'aa4560dd8fe5645745fed3ffa301c3ca4d6c03cbd738145b613303961ba733b8'
+	'3e2d44b01c9a248a61bedae4f15c8aae501328b1f7adfe6e111a5da5aa5c5104'
+	'9dd76f7ab430edd091db24c3f18e71410325c1414141aad5fe67947873ffba06'
+	'e4440e07e02fa6b5a8f497da52fcab0aa711b399d43ff28a2ba246c603363930'
+	'e5a3a1e2e2cb6fee66d1e7f821b5c04f3ad7792f1e5b3cac545c2e52173e908d'
+)
+package() {
+	cd "$srcdir"
+	install -Dm644 ./*.tt[fc] -t "$pkgdir"/usr/share/fonts/$pkgname
+}
