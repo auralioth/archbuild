@@ -21,7 +21,6 @@ jobs:
           - dae-git
           - dae-rules-dat
           - ctex-windows-fonts
-          - auth-thu
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
