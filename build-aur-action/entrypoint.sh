@@ -7,6 +7,11 @@ useradd builder -m
 echo "builder ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
 chmod -R a+rw .
 
+cat <<EOM >>/etc/pacman.conf
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+EOM
+
 pacman-key --init
 pacman -Syu --noconfirm
 if [ -n "$INPUT_PREINSTALLPKGS" ]; then
