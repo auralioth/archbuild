@@ -21,6 +21,7 @@ jobs:
           - dae-git
           - dae-rules-dat
           - ctex-windows-fonts
+          - wine-patch
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
