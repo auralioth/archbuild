@@ -48,6 +48,7 @@ jobs:
           token: ${{ github.token }}
           tag: packages
           assets: ${{ steps.build.outputs.old_asset }}
+          fail-if-no-assets: false
   Release:
     needs: Build
     runs-on: ubuntu-latest
