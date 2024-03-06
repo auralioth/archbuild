@@ -1,6 +1,6 @@
 pkgname=dae-rules-dat
 _pkgname=v2ray-rules-dat
-pkgver=20240305220
+pkgver=20240305220920240305220
 pkgrel=1
 pkgdesc="Route rules for dae"
 arch=('any')
