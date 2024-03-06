@@ -33,12 +33,7 @@ old_asset=$(basename $(sudo -u builder makepkg --packagelist))
 status="false"
 
 # 从 vfile 获取定义的 oldver 值
-output=$(source $vfile && declare -p oldver || :)
-pattern='declare -- oldver="([^"]+)"'
-
-if [[ $output =~ $pattern ]]; then
-	oldver_file="${BASH_REMATCH[1]}"
-fi
+oldver_file=$(cat $vfile | grep -n "^oldver" | awk -F '\"' '{print $2}')
 
 if [ ! -f "$oldver_file" ]; then
 	oldver=""
@@ -53,7 +48,7 @@ if [ "$oldver" != "$newver" ]; then
 	if ! grep -nq "^pkgver()" PKGBUILD; then
 		sed -i "s/pkgver=$oldver/pkgver=$newver/" PKGBUILD
 	fi
-	updpkgsums
+	sudo -u builder updpkgsums
 	sudo -u builder bash -c 'export MAKEFLAGS=j$(nproc) && makepkg -s --noconfirm'
 fi
 
