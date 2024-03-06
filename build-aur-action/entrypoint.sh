@@ -28,12 +28,14 @@ cd "$pkgname" || exit
 
 # 用于后续 delete-asset
 old_asset=$(basename $(sudo -u builder makepkg --packagelist))
+echo "old_asset=$old_asset" >>$GITHUB_OUTPUT
 
 # Check 更新状态
 status="false"
 
 # 从 vfile 获取定义的 oldver 值
 oldver_file=$(cat $vfile | grep -n "^oldver" | awk -F '\"' '{print $2}')
+echo "oldver_file=$oldver_file" >>$GITHUB_OUTPUT
 data=$(nvchecker -t 3 --logger json -c $vfile)
 
 if [ ! -f "$oldver_file" ]; then
@@ -43,6 +45,7 @@ else
 fi
 
 newver=$(echo $data | jq -r '.version')
+echo "newver=$newver" >>$GITHUB_OUTPUT
 
 if [ "$oldver" != "$newver" ]; then
 	status="true"
@@ -51,12 +54,8 @@ if [ "$oldver" != "$newver" ]; then
 	fi
 	sudo -u builder updpkgsums
 	sudo -u builder bash -c 'export MAKEFLAGS=j$(nproc) && makepkg -s --noconfirm'
+	asset=$(basename $(sudo -u builder makepkg --packagelist))
+	echo "asset=$asset" >>$GITHUB_OUTPUT
 fi
 
-asset=$(basename $(sudo -u builder makepkg --packagelist))
-
-echo "oldver_file=$oldver_file" >>$GITHUB_OUTPUT
-echo "old_asset=$old_asset" >>$GITHUB_OUTPUT
 echo "status=$status" >>$GITHUB_OUTPUT
-echo "asset=$asset" >>$GITHUB_OUTPUT
-echo "newver=$newver" >>$GITHUB_OUTPUT

@@ -16,7 +16,7 @@ outputs:
   status:
     description: 'Update status'
   asset:
-    description: 'Newest package asset'
+    description: 'Newest package asset(may not exist)'
   newver:
     description: 'Newest version'
   old_asset:
