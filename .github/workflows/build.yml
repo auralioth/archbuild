@@ -13,13 +13,13 @@ jobs:
       fail-fast: false
       matrix:
         pkgs:
-          # - adobe-source-han-sans-otc-fonts
-          # - adobe-source-han-serif-otc-fonts
-          # - noto-fonts-all
-          # - clash-meta-alpha-git
+          - adobe-source-han-sans-otc-fonts
+          - adobe-source-han-serif-otc-fonts
+          - noto-fonts-all
+          - clash-meta-alpha-git
           - dae-git
           - dae-rules-dat
-          # - ctex-windows-fonts
+          - ctex-windows-fonts
           # - wine-patch
     steps:
       - name: Checkout repository
