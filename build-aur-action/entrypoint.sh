@@ -31,19 +31,27 @@ old_asset=$(basename $(sudo -u builder makepkg --packagelist))
 
 # Check 更新状态
 status="false"
-output=$(source PKGBUILD && declare -p pkgver || :)
-pattern='declare -- pkgver="([^"]+)"'
+
+# 从 vfile 获取定义的 oldver 值
+output=$(source $vfile && declare -p oldver || :)
+pattern='declare -- oldver="([^"]+)"'
 
 if [[ $output =~ $pattern ]]; then
-	pkgver="${BASH_REMATCH[1]}"
+	oldver_file="${BASH_REMATCH[1]}"
+fi
+
+if [ ! -f "$oldver_file" ]; then
+	oldver=""
+else
+	oldver=$(cat $oldver_file | jq -r .$pkgname)
 fi
 
 newver=$(nvchecker -t 3 --logger json -c $vfile | jq -r '.version')
 
-if [ "$pkgver" != "$newver" ]; then
+if [ "$oldver" != "$newver" ]; then
 	status="true"
 	if ! grep -nq "^pkgver()" PKGBUILD; then
-		sed -i "s/pkgver=$pkgver/pkgver=$newver/" PKGBUILD
+		sed -i "s/pkgver=$oldver/pkgver=$newver/" PKGBUILD
 	fi
 	updpkgsums
 	sudo -u builder bash -c 'export MAKEFLAGS=j$(nproc) && makepkg -s --noconfirm'
@@ -51,6 +59,7 @@ fi
 
 asset=$(basename $(sudo -u builder makepkg --packagelist))
 
+echo "oldver_file=$oldver_file" >>$GITHUB_OUTPUT
 echo "old_asset=$old_asset" >>$GITHUB_OUTPUT
 echo "status=$status" >>$GITHUB_OUTPUT
 echo "asset=$asset" >>$GITHUB_OUTPUT

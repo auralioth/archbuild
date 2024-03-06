@@ -1,0 +1,7 @@
+[__config__]
+oldver = "old_ver.json"
+
+[wine-patch]
+source = "archpkg"
+archpkg = "wine"
+strip_release = true

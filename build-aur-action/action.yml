@@ -21,6 +21,8 @@ outputs:
     description: 'Newest version'
   old_asset:
     description: 'Old package asset'
+  oldver_file:
+    description: 'Old version file defined in nvchecker config'
 runs:
   using: 'docker'
   image: 'Dockerfile'
