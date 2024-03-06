@@ -33,7 +33,7 @@ jobs:
         if: steps.build.outputs.status == 'true'
         with:
           add: "${{ matrix.pkgs }}/PKGBUILD"
-          message: ⏰${{ matrix.pkgs }}:auto updated to ${{ steps.build.outputs.newver }}
+          message: ⏰ ${{ matrix.pkgs }}:auto updated to ${{ steps.build.outputs.newver }}
           pull: "--rebase --autostash"
       - name: Upload Packages Artifact
         uses: actions/upload-artifact@v4
