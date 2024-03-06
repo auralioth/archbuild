@@ -6,7 +6,7 @@ arch=("any")
 url="https://github.com/auryouth/archbuild"
 license=("custom:free")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/auryouth/winfonts/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('5ec27f80128c7e4d10bf556893405d15546b0c6ba42a62ed3b89e27651bf9e1b')
 
 package() {
 	cd "$srcdir"/winfonts-$pkgver
