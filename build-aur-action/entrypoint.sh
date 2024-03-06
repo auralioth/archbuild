@@ -16,7 +16,7 @@ EOM
 
 pacman-key --init
 pacman -Syu --noconfirm
-pacman -S nvchecker --noconfirm
+pacman -S nvchecker jq pacman-contrib --noconfirm
 
 # 确定打包文件
 if [ ! -d "$pkgname" ]; then
