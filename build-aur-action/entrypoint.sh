@@ -36,7 +36,7 @@ status="false"
 oldver_file=$(cat $vfile | grep -n "^oldver" | awk -F '\"' '{print $2}')
 
 if [ ! -f "$oldver_file" ]; then
-	oldver=""
+	oldver=$(cat PKGBUILD | grep -n "^pkgver=" | awk -F= '{print $2}')
 else
 	oldver=$(cat $oldver_file | jq -r .$pkgname)
 fi
