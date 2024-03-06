@@ -26,31 +26,28 @@ fi
 
 cd "$pkgname" || exit
 
-# 用于后续 delete-asset
-old_asset=$(basename $(sudo -u builder makepkg --packagelist))
-echo "old_asset=$old_asset" >>$GITHUB_OUTPUT
-
 # Check 更新状态
 status="false"
 
-# 从 vfile 获取定义的 oldver 值
-oldver_file=$(cat $vfile | grep -n "^oldver" | awk -F '\"' '{print $2}')
-echo "oldver_file=$oldver_file" >>$GITHUB_OUTPUT
-data=$(nvchecker -t 3 --logger json -c $vfile)
+# 只利用 new_ver 来反应更新前后状态
+newver_file=$(cat $vfile | grep -n "^newver" | awk -F '\"' '{print $2}')
+echo "newver_file=$newver_file" >>$GITHUB_OUTPUT
 
-if [ ! -f "$oldver_file" ]; then
-	oldver=$(cat PKGBUILD | grep -n "^pkgver=" | awk -F= '{print $2}')
-else
-	oldver=$(echo $data | jq -r '.old_version')
-fi
+data=$(nvchecker -t 3 --logger json -c $vfile)
+oldver=$(echo $data | jq -r '.old_version')
 
 newver=$(echo $data | jq -r '.version')
 echo "newver=$newver" >>$GITHUB_OUTPUT
 
 if [ "$oldver" != "$newver" ]; then
 	status="true"
+
+	# 用于后续 delete-asset
+	old_asset=$(basename $(sudo -u builder makepkg --packagelist))
+	echo "old_asset=$old_asset" >>$GITHUB_OUTPUT
+
 	if ! grep -nq "^pkgver()" PKGBUILD; then
-		sed -i "s/pkgver=$oldver/pkgver=$newver/" PKGBUILD
+		sed -i "s/^pkgver=.*/pkgver=$newver/" PKGBUILD
 	fi
 	sudo -u builder updpkgsums
 	sudo -u builder bash -c 'export MAKEFLAGS=j$(nproc) && makepkg -s --noconfirm'

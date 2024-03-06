@@ -1,5 +1,5 @@
 [__config__]
-oldver = "old_ver.json"
+newver = "new_ver.json"
 
 [clash-meta-aplha-git]
 source = "github"
