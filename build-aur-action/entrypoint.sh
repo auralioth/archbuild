@@ -34,14 +34,15 @@ status="false"
 
 # 从 vfile 获取定义的 oldver 值
 oldver_file=$(cat $vfile | grep -n "^oldver" | awk -F '\"' '{print $2}')
+data=$(nvchecker -t 3 --logger json -c $vfile)
 
 if [ ! -f "$oldver_file" ]; then
 	oldver=$(cat PKGBUILD | grep -n "^pkgver=" | awk -F= '{print $2}')
 else
-	oldver=$(cat $oldver_file | jq -r .$pkgname)
+	oldver=$(echo $data | jq -r '.old_version')
 fi
 
-newver=$(nvchecker -t 3 --logger json -c $vfile | jq -r '.version')
+newver=$(echo $data | jq -r '.version')
 
 if [ "$oldver" != "$newver" ]; then
 	status="true"
