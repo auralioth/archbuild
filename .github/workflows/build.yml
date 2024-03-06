@@ -1,7 +1,6 @@
 name: Build and release
 on:
   workflow_dispatch:
-  push:
   schedule:
     - cron: "0 */12 * * *"
 
@@ -14,14 +13,14 @@ jobs:
       fail-fast: false
       matrix:
         pkgs:
-          - adobe-source-han-sans-otc-fonts
-          - adobe-source-han-serif-otc-fonts
-          - noto-fonts-all
-          - clash-meta-alpha-git
+          # - adobe-source-han-sans-otc-fonts
+          # - adobe-source-han-serif-otc-fonts
+          # - noto-fonts-all
+          # - clash-meta-alpha-git
           - dae-git
           - dae-rules-dat
-          - ctex-windows-fonts
-          - wine-patch
+          # - ctex-windows-fonts
+          # - wine-patch
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,33 +28,26 @@ jobs:
         id: build
         with:
           pkg_name: ${{ matrix.pkgs }}
-          repo_full: ${{ github.repository }}
-        env:
-          GH_TOKEN: ${{ github.token }}
+          vfile: config.toml
       - uses: EndBug/add-and-commit@v9
-        with:
-          add: "${{ matrix.pkgs }}/PKGBUILD"
-          message: ${{ matrix.pkgs }}:auto updated to ${{ steps.build.outputs.new_ver }}
-          pull: "--rebase --autostash"
-      - name: generate tag
-        id: tag
-        run: |
-          count=$(git rev-list --count HEAD)
-          hash=$(git rev-parse --short HEAD)
-          echo "tag=r${count}.${hash}" >> $GITHUB_OUTPUT
-      - name: Upload Packages Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ matrix.pkgs }}-${{ steps.tag.outputs.tag }}
-          path: ${{ matrix.pkgs }}/${{ steps.build.outputs.asset }}
-      - uses: ./delete-asset-action
         if: steps.build.outputs.status == 'true'
         with:
-          pkg_name: ${{ matrix.pkgs }}
-          repo_full: ${{ github.repository }}
+          add: "${{ matrix.pkgs }}/PKGBUILD"
+          message: ⏰${{ matrix.pkgs }}:auto updated to ${{ steps.build.outputs.newver }}
+          pull: "--rebase --autostash"
+      - name: Upload Packages Artifact
+        uses: actions/upload-artifact@v4
+        if: steps.build.outputs.status == 'true'
+        with:
+          name: ${{ steps.build.outputs.asset }}
+          path: ${{ matrix.pkgs }}/${{ steps.build.outputs.asset }}
+          if-no-files-found: error
+      - uses: mknejp/delete-release-assets@v1
+        if: steps.build.outputs.status == 'true'
+        with:
+          token: ${{ github.token }}
           tag: packages
-        env:
-          GH_TOKEN: ${{ github.token }}
+          assets: ${{ steps.build.outputs.old_asset }}
   Release:
     needs: Build
     runs-on: ubuntu-latest
@@ -69,7 +61,10 @@ jobs:
       - uses: ./repo-add-action
         with:
           repo_owner: ${{ github.repository_owner }}
+          repo_full: ${{ github.repository }}
           path: bin
+        env:
+          GH_TOKEN: ${{ github.token }}
       - name: Upload Release
         if: ${{ github.ref == 'refs/heads/master' && !contains(github.event.head_commit.message, '[no rel]') }}
         uses: softprops/action-gh-release@v1
@@ -77,8 +72,8 @@ jobs:
           tag_name: packages
           files: |
             ${{ github.workspace }}/*.pkg.tar.*
-            ${{ github.workspace }}/*.files*
-            ${{ github.workspace }}/*.db*
+            ${{ github.workspace }}/*.files
+            ${{ github.workspace }}/*.db
           generate_release_notes: true
       - name: Send notify to telegram
         uses: appleboy/telegram-action@master

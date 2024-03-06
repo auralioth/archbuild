@@ -8,6 +8,10 @@ inputs:
     description: 'GitHub repository owner'
     required: true
     default: ""
+  repo_full:
+    description: 'GitHub repository'
+    required: true
+    default: ""
   path:
     description: 'Where the artifact exists'
     required: true
@@ -17,4 +21,5 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.repo_owner }}
+    - ${{ inputs.repo_full }}
     - ${{ inputs.path }}

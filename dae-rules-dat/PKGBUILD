@@ -6,16 +6,13 @@ pkgdesc="Route rules for dae"
 arch=('any')
 url="https://github.com/Loyalsoldier/v2ray-rules-dat"
 license=('GPL-3.0')
-source=("git+${url}.git#branch=release")
-sha512sums=('SKIP')
-
-pkgver() {
-	cd ${_pkgname}
-	git tag --sort=-version:refname | head -n 1
-}
+source=("https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/${pkgver}/geoip.dat"
+	"https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/${pkgver}/geosite.dat")
+sha256sums=('e57ec338292df5d00fdb33cf10255c1d3c7f2d296cc7366ecac98ec94c5d376'
+	'1868bffdc562a39a7370ab8e30e17bbbcf00e5f8ee1928c59fc186959b00e57')
 
 package() {
-	cd "$srcdir/${_pkgname}"
+	cd "$srcdir"
 	install -Dm644 geoip.dat "$pkgdir"/usr/share/dae/geoip.dat
 	install -Dm644 geosite.dat "$pkgdir"/usr/share/dae/geosite.dat
 }

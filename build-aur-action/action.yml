@@ -8,22 +8,22 @@ inputs:
     description: 'ArchLinux package name to build'
     required: true
     default: ""
-  repo_full:
-    description: 'GitHub repository'
+  vfile:
+    description: 'nvchecker version files name'
     required: true
-    default: ""
-  preinstallPkgs:
-    description: 'packages need install before build, separated by space'
-    required: false
     default: ""
 outputs:
   status:
-    description: 'Update status(13 for no update)'
+    description: 'Update status'
   asset:
     description: 'Newest package asset'
+  newver:
+    description: 'Newest version'
+  old_asset:
+    description: 'Old package asset'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.pkg_name }}
-    - ${{ inputs.repo_full }}
+    - ${{ inputs.vfile }}
