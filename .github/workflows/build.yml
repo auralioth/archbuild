@@ -34,9 +34,9 @@ jobs:
         if: steps.build.outputs.status == 'true'
         with:
           add: 
-            - ${{ matrix.pkgs }}/PKGBUILD
-            - ${{ matrix.pkgs }}/${{ steps.build.outputs.newver_file }}
-            - ${{ matrix.pkgs }}/${{ steps.build.outputs.oldver_file }}
+            - '${{ matrix.pkgs }}/PKGBUILD'
+            - '${{ matrix.pkgs }}/${{ steps.build.outputs.newver_file }}'
+            - '${{ matrix.pkgs }}/${{ steps.build.outputs.oldver_file }}'
           message: ⏰ ${{ matrix.pkgs }}:auto updated to ${{ steps.build.outputs.newver }}
           pull: "--rebase --autostash"
       - name: Upload Packages Artifact
