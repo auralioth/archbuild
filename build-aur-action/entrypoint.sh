@@ -48,7 +48,7 @@ if [ "$event" = "up-to-date" ]; then
 	exit 0
 fi
 
-if [ "$event" = "updated"]; then
+if [ "$event" = "updated" ]; then
 	oldver=$(echo $data | jq -r '.old_version')
 	newver=$(echo $data | jq -r '.version')
 	cp $newver_file $oldver_file
