@@ -29,17 +29,35 @@ cd "$pkgname" || exit
 # Check 更新状态
 status="false"
 
-# 只利用 new_ver 来反应更新前后状态
+oldver_file=$(cat $vfile | grep -n "^oldver" | awk -F '\"' '{print $2}')
 newver_file=$(cat $vfile | grep -n "^newver" | awk -F '\"' '{print $2}')
-echo "newver_file=$newver_file" >>$GITHUB_OUTPUT
 
 data=$(nvchecker -t 3 --logger json -c $vfile)
-oldver=$(echo $data | jq -r '.old_version')
+event=$(echo $data | jq -r '.event')
+level=$(echo $data | jq -r '.level')
 
-newver=$(echo $data | jq -r '.version')
-echo "newver=$newver" >>$GITHUB_OUTPUT
+if [ "$level" = "error" ]; then
+	echo "::group::Nvchecker"
+	echo "::error file=entrypoint.sh,line=39::nvchecker error"
+	echo "::endgroup::"
+	exit 1
+fi
 
-if [ "$oldver" != "$newver" ]; then
+if [ "$event" = "up-to-date" ]; then
+	echo "status=$status" >>$GITHUB_OUTPUT
+	exit 0
+fi
+
+if [ "$event" = "updated"]; then
+	echo "oldver_file=$oldver_file" >>$GITHUB_OUTPUT
+	echo "newver_file=$newver_file" >>$GITHUB_OUTPUT
+
+	oldver=$(echo $data | jq -r '.old_version')
+	newver=$(echo $data | jq -r '.version')
+	cp $newver_file $oldver_file
+
+	echo "newver=$newver" >>$GITHUB_OUTPUT
+
 	status="true"
 
 	# 用于后续 delete-asset
@@ -53,6 +71,12 @@ if [ "$oldver" != "$newver" ]; then
 	sudo -u builder bash -c 'export MAKEFLAGS=j$(nproc) && makepkg -s --noconfirm'
 	asset=$(basename $(sudo -u builder makepkg --packagelist))
 	echo "asset=$asset" >>$GITHUB_OUTPUT
+
+	echo "status=$status" >>$GITHUB_OUTPUT
+	exit 0
 fi
 
-echo "status=$status" >>$GITHUB_OUTPUT
+echo "::group::Unknown"
+echo "::error file=entrypoint.sh,line=77::something unknown happened"
+echo "::endgroup::"
+exit 1
