@@ -70,7 +70,7 @@ if [ "$event" = "updated" ]; then
 
 	echo "status=$status" >>$GITHUB_OUTPUT
 
-	echo "commit_file=PKGBUILD $oldver_file $newver_file" >>$GITHUB_OUTPUT
+	echo "commit_file=$pkgname/PKGBUILD $pkgname/$oldver_file $pkgname/$newver_file" >>$GITHUB_OUTPUT
 
 	echo "asset=$asset" >>$GITHUB_OUTPUT
 
