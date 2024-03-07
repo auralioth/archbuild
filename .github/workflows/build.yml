@@ -35,10 +35,7 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v5
         if: steps.build.outputs.status == 'true'
         with:
-          file_pattern: 
-            - '${{ matrix.pkgs }}/PKGBUILD'
-            - '${{ matrix.pkgs }}/${{ steps.build.outputs.newver_file }}'
-            - '${{ matrix.pkgs }}/${{ steps.build.outputs.oldver_file }}'
+          file_pattern: '${{ matrix.pkgs }}/${{ steps.build.outputs.commit_file }}'
           commit_message: ⏰ ${{ matrix.pkgs }}:auto updated to ${{ steps.build.outputs.newver }}
       - name: Upload Packages Artifact
         uses: actions/upload-artifact@v4

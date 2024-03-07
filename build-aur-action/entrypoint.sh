@@ -49,9 +49,6 @@ if [ "$event" = "up-to-date" ]; then
 fi
 
 if [ "$event" = "updated"]; then
-	echo "oldver_file=$oldver_file" >>$GITHUB_OUTPUT
-	echo "newver_file=$newver_file" >>$GITHUB_OUTPUT
-
 	oldver=$(echo $data | jq -r '.old_version')
 	newver=$(echo $data | jq -r '.version')
 	cp $newver_file $oldver_file
@@ -70,9 +67,13 @@ if [ "$event" = "updated"]; then
 	sudo -u builder updpkgsums
 	sudo -u builder bash -c 'export MAKEFLAGS=j$(nproc) && makepkg -s --noconfirm'
 	asset=$(basename $(sudo -u builder makepkg --packagelist))
-	echo "asset=$asset" >>$GITHUB_OUTPUT
 
 	echo "status=$status" >>$GITHUB_OUTPUT
+
+	echo "commit_file=PKGBUILD $oldver_file $newver_file" >>$GITHUB_OUTPUT
+
+	echo "asset=$asset" >>$GITHUB_OUTPUT
+
 	exit 0
 fi
 
