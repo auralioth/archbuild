@@ -30,15 +30,16 @@ jobs:
         with:
           pkg_name: ${{ matrix.pkgs }}
           vfile: config.toml
-      - uses: EndBug/add-and-commit@v9
+      - name: Pull Remote Changes
+        run: git pull --rebase --autostash
+      - uses: stefanzweifel/git-auto-commit-action@v5
         if: steps.build.outputs.status == 'true'
         with:
-          add: 
+          file_pattern: 
             - '${{ matrix.pkgs }}/PKGBUILD'
             - '${{ matrix.pkgs }}/${{ steps.build.outputs.newver_file }}'
             - '${{ matrix.pkgs }}/${{ steps.build.outputs.oldver_file }}'
-          message: ⏰ ${{ matrix.pkgs }}:auto updated to ${{ steps.build.outputs.newver }}
-          pull: "--rebase --autostash"
+          commit_message: ⏰ ${{ matrix.pkgs }}:auto updated to ${{ steps.build.outputs.newver }}
       - name: Upload Packages Artifact
         uses: actions/upload-artifact@v4
         if: steps.build.outputs.status == 'true'
