@@ -20,6 +20,7 @@ jobs:
           - dae-git
           - dae-rules-dat
           - ctex-windows-fonts
+          - auth-thu-git
           # - wine-patch
     steps:
       - name: Checkout repository

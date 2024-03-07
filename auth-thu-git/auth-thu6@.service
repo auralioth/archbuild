@@ -1,0 +1,17 @@
+[Unit]
+Description=Authenticating utility for auth.tsinghua.edu.cn
+Before=dae.service
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+ExecStartPre=-/usr/local/bin/auth-thu -D deauth -6
+ExecStartPre=-/usr/local/bin/auth-thu -D auth -6
+ExecStart=/usr/local/bin/auth-thu -D online -6
+User=%i
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy = multi-user.target
