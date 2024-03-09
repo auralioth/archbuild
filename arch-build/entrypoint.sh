@@ -8,6 +8,8 @@ cat <<EOM >>/etc/pacman.conf
 Include = /etc/pacman.d/mirrorlist
 EOM
 
+chmod -R a+rw .
+
 cd $pkg || exit 1
 
 # 用于后续 delete-asset
