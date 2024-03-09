@@ -8,8 +8,8 @@ url="https://github.com/Loyalsoldier/v2ray-rules-dat"
 license=('GPL-3.0')
 source=("https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/${pkgver}/geoip.dat"
 	"https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/${pkgver}/geosite.dat")
-sha256sums=('e57ec338292df5d00fdb33cf10a255c1d3c7f2d296cc7366ecac98ec94c5d376'
-	'ccd3af97ef05000de567857564942f65b1147ca6a0d371f9ef53a96e258aafd9')
+sha256sums=('852f8877c7d3007f124c38ad43dd78963b5f1a7d11e4fbe3c5349529c7ce74e2'
+            '0d9753e38155a8272e236214190c1c597c9f6c56d291208726a9670309e70980')
 
 package() {
 	cd "$srcdir"
