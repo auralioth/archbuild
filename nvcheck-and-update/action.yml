@@ -1,26 +1,26 @@
-name: 'Build AUR Package'
-description: 'Build an ArchLinux package in Docker container'
+name: "Build AUR Package"
+description: "Build an ArchLinux package in Docker container"
 branding:
   icon: user-check
   color: gray-dark
 inputs:
   nvfile:
-    description: 'nvchecker version files name'
-    required: false
+    description: "nvchecker version files name"
+    required: true
     default: "nvchecker.toml"
   changed_files:
-    description: 'Changed files'
-    required: false
+    description: "Changed files"
+    required: true
 outputs:
   status:
-    description: 'Update status'
+    description: "Update status"
   matrix:
-    description: 'Packages need to update matrix'
+    description: "Packages need to update matrix"
   oldver_file:
-    description: 'Old version file(updated)'
+    description: "Old version file(updated)"
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
   args:
     - ${{ inputs.nvfile }}
     - ${{ inputs.changed_files }}

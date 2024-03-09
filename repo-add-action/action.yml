@@ -1,24 +1,24 @@
-name: 'Repo-Add'
-description: 'Build archlinux repo'
+name: "Repo-Add"
+description: "Build archlinux repo"
 branding:
   icon: user-check
   color: gray-dark
 inputs:
   repo_owner:
-    description: 'GitHub repository owner'
+    description: "GitHub repository owner"
     required: true
     default: ${{ github.repository_owner }}
   repo_full:
-    description: 'GitHub repository'
+    description: "GitHub repository"
     required: true
     default: ${{ github.repository }}
   path:
-    description: 'Where the artifact exists'
+    description: "Where the artifact exists"
     required: true
     default: ${{ github.workspace }}
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
   args:
     - ${{ inputs.repo_owner }}
     - ${{ inputs.repo_full }}

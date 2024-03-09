@@ -9,7 +9,7 @@ license=('GPL-3.0')
 source=("https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/${pkgver}/geoip.dat"
 	"https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/${pkgver}/geosite.dat")
 sha256sums=('e57ec338292df5d00fdb33cf10a255c1d3c7f2d296cc7366ecac98ec94c5d376'
-            'ccd3af97ef05000de567857564942f65b1147ca6a0d371f9ef53a96e258aafd9')
+	'ccd3af97ef05000de567857564942f65b1147ca6a0d371f9ef53a96e258aafd9')
 
 package() {
 	cd "$srcdir"

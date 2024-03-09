@@ -5,4 +5,4 @@ RUN date
 RUN pacman-key --init
 RUN pacman -Syu --noconfirm
 COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"] 
+ENTRYPOINT ["/entrypoint.sh"]

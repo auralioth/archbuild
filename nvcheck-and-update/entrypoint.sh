@@ -12,8 +12,6 @@ changed_files=$INPUT_CHANGED_FILES
 # [multilib]
 # Include = /etc/pacman.d/mirrorlist
 # EOM
-dir=$(pwd)
-echo $dir
 
 pacman -Syu --noconfirm
 pacman -S jq pacman-contrib nvchecker --noconfirm
@@ -29,9 +27,8 @@ data=$(nvchecker -t 3 --logger json -c $nvfile)
 packages_need_update=()
 versions=()
 
-echo "$data" | jq -c '.' | while read -r group; do
-	for key in "${keys[@]}";
-	do
+while read -r group; do
+	for key in "${keys[@]}"; do
 		declare "$key=$(echo "$group" | jq -r ".${key}")"
 	done
 
@@ -47,15 +44,15 @@ echo "$data" | jq -c '.' | while read -r group; do
 	fi
 
 	if comm -12 <(find "$name" -type f | sort) <(echo "$changed_files" | tr ' ' '\n' | sort) | grep -q .; then
-        file_changed="true"
+		file_changed="true"
 	else
 		file_changed="false"
 	fi
 
 	if [ "$event" = "updated" ] || [ "$file_changed" = "true" ]; then
-		
+
 		packages_need_update+=($name)
-		packages_newvers+=($version)
+		versions+=($version)
 
 		nvtake --ignore-nonexistent -c $nvfile $name
 
@@ -75,13 +72,15 @@ echo "$data" | jq -c '.' | while read -r group; do
 
 		# echo "asset=$asset" >>$GITHUB_OUTPUT
 	fi
-done
+done < <(echo "$data" | jq -c '.')
+
+echo ${#packages_need_update[@]}
 
 if [ ${#packages_need_update[@]} -eq 0 ]; then
 	echo "status=false" >>$GITHUB_OUTPUT
 else
 	echo "status=true" >>$GITHUB_OUTPUT
-	
+
 	# matrix="{\"pkg\": ["
 	# for package in "${packages_need_update[@]}"; do
 	# matrix="${matrix}\"$package\", "
@@ -90,14 +89,14 @@ else
 	# echo "matrix=${matrix}" >> $GITHUB_OUTPUT
 
 	matrix="{\"include\": ["
-	for ((i=0; i<${#packages_need_update[@]}; i++)); do
-	matrix="${matrix}{\"pkg\": \"${packages_need_update[i]}\", \"version\": \"${versions[i]}\"}"
-	if [ $i -lt $(( ${#packages[@]} - 1 )) ]; then
-		matrix="${matrix}, "
-	fi
+	for ((i = 0; i < ${#packages_need_update[@]}; i++)); do
+		matrix="${matrix}{\"pkg\": \"${packages_need_update[i]}\", \"version\": \"${versions[i]}\"}"
+		if [ $i -lt $((${#packages_need_update[@]} - 1)) ]; then
+			matrix="${matrix}, "
+		fi
 	done
 	matrix="${matrix}]}"
-	echo "matrix=${matrix}" >> $GITHUB_OUTPUT
+	echo "matrix=${matrix}" >>$GITHUB_OUTPUT
 
 	echo "oldver_file=$oldver_file" >>$GITHUB_OUTPUT
 fi
