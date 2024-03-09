@@ -12,6 +12,8 @@ changed_files=$INPUT_CHANGED_FILES
 # [multilib]
 # Include = /etc/pacman.d/mirrorlist
 # EOM
+dir=$(pwd)
+echo $dir
 
 pacman -Syu --noconfirm
 pacman -S jq pacman-contrib nvchecker --noconfirm
