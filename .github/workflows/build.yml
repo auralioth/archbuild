@@ -22,7 +22,7 @@ jobs:
               echo "changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | xargs)" >> $GITHUB_OUTPUT
       - name: nvchecker and update
         id: checker
-        uses: nvcheck-and-update
+        uses: ./nvcheck-and-update
         with:
           changed_files: ${{ steps.changed-files.outputs.changed_files }}
       - uses: stefanzweifel/git-auto-commit-action@v5
@@ -41,7 +41,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - uses: arch-build
+      - uses: ./arch-build
         id: build
         with:
           pkg: ${{ matrix.pkg }}
@@ -83,7 +83,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           merge-multiple: true
-      - uses: repo-add-action
+      - uses: ./repo-add-action
         env:
           GH_TOKEN: ${{ github.token }}
       - name: Upload Release
