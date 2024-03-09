@@ -13,9 +13,6 @@ changed_files=$INPUT_CHANGED_FILES
 # Include = /etc/pacman.d/mirrorlist
 # EOM
 
-pacman -Syu --noconfirm
-pacman -S jq pacman-contrib nvchecker --noconfirm
-
 oldver_file=$(cat $nvfile | grep -n "^oldver" | awk -F '\"' '{print $2}')
 # newver_file=$(cat $nvfile | grep -n "^newver" | awk -F '\"' '{print $2}')
 

@@ -3,19 +3,6 @@
 pkg=$INPUT_PKG
 version=$INPUT_VERSION
 
-# 初始化
-useradd builder -m
-echo "builder ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
-chmod -R a+rw .
-
-cat <<EOM >>/etc/pacman.conf
-[multilib]
-Include = /etc/pacman.d/mirrorlist
-EOM
-
-pacman -Syu --noconfirm
-pacman -S base-devel --noconfirm
-
 cd $pkg || exit 1
 
 # 用于后续 delete-asset
