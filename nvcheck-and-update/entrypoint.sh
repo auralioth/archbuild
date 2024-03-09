@@ -97,5 +97,5 @@ else
 	matrix="${matrix}]}"
 	echo "matrix=${matrix}" >> $GITHUB_OUTPUT
 
-	echo "oldver_file_updated=$oldver_file" >>$GITHUB_OUTPUT
+	echo "oldver_file=$oldver_file" >>$GITHUB_OUTPUT
 fi

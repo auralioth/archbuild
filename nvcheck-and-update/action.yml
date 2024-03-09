@@ -16,7 +16,7 @@ outputs:
     description: 'Update status'
   matrix:
     description: 'Packages need to update matrix'
-  oldver_file_updated:
+  oldver_file:
     description: 'Old version file(updated)'
 runs:
   using: 'docker'
