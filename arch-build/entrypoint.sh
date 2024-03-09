@@ -3,6 +3,11 @@
 pkg=$INPUT_PKG
 version=$INPUT_VERSION
 
+cat <<EOM >>/etc/pacman.conf \
+[multilib] \
+Include = /etc/pacman.d/mirrorlist \
+EOM
+
 cd $pkg || exit 1
 
 # 用于后续 delete-asset
