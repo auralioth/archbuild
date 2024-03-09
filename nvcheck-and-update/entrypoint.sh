@@ -55,7 +55,7 @@ echo "$data" | jq -c '.' | while read -r group; do
 		packages_need_update+=($name)
 		packages_newvers+=($version)
 
-		nvtake -ignore-nonexistent -c $nvfile $name
+		nvtake --ignore-nonexistent -c $nvfile $name
 
 		# 用于后续 delete-asset
 		# old_pkgver=$(cat PKGBUILD | grep -n "^pkgver=" | awk -F= '{print $2}')
