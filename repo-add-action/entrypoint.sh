@@ -7,6 +7,7 @@ path=$INPUT_PATH
 gh release download -p "$repo_onwer.db.tar.gz" -R $repo_full
 
 repo-add -R $path/$repo_onwer.db.tar.gz ./*.pkg.tar.zst
+ls -l
 for i in *.db *.files; do
 	cp --remove-destination $(readlink $i) $i
 done
