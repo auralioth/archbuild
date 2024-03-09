@@ -11,7 +11,6 @@ jobs:
     outputs:
       matrix: ${{ steps.checker.outputs.matrix }}
       status: ${{ steps.checker.outputs.status }}
-      oldver_file: ${{ steps.checker.outputs.oldver_file }}
     steps:
       - name: Checkout to repository
         uses: actions/checkout@v4
@@ -23,16 +22,14 @@ jobs:
               echo "changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | xargs)" >> $GITHUB_OUTPUT
       - name: nvchecker and update
         id: checker
-        uses: ./nvcheck-and-update
+        uses: nvcheck-and-update
         with:
           changed_files: ${{ steps.changed-files.outputs.changed_files }}
-      - name: upload oldver file
+      - uses: stefanzweifel/git-auto-commit-action@v5
         if: steps.checker.outputs.status == 'true'
-        uses: actions/upload-artifact@v4
         with:
-          name: oldver_file
-          path: ${{ steps.checker.outputs.oldver_file }}
-          if-no-files-found: error
+          file_pattern: ${{ steps.checker.outputs.oldver_file }}
+          commit_message: ⏰ auto updated oldver file
   Build:
     if: needs.check.outputs.status == 'true'
     permissions: write-all
@@ -44,7 +41,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - uses: ./arch-build
+      - uses: arch-build
         id: build
         with:
           pkg: ${{ matrix.pkg }}
@@ -81,17 +78,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: remove oldver file
-        run: rm -f ${{ needs.check.outputs.oldver_file }}
+      - name: Pull Remote Changes
+        run: git pull --rebase --autostash
       - uses: actions/download-artifact@v4
         with:
           merge-multiple: true
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        if: ${{ success() }}
-        with:
-          file_pattern: ${{ needs.check.outputs.oldver_file }}
-          commit_message: ⏰ auto updated oldver file
-      - uses: ./repo-add-action
+      - uses: repo-add-action
         env:
           GH_TOKEN: ${{ github.token }}
       - name: Upload Release
