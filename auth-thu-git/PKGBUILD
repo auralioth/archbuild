@@ -10,8 +10,8 @@ source=("git+${url}.git"
 	"auth-thu@.service"
 	"auth-thu6@.service")
 sha256sums=('SKIP'
-	'cc8fcf895f7f7b6902a06b2491c36e890daa9cdd544a159709f881ee5346a4b8'
-	'e48341c08d99e231863ca8ce455abebf36f180aaccef9b0eecb513d8d0518b2e')
+            'cc8fcf895f7f7b6902a06b2491c36e890daa9cdd544a159709f881ee5346a4b8'
+            'e48341c08d99e231863ca8ce455abebf36f180aaccef9b0eecb513d8d0518b2e')
 
 build() {
 	cd "GoAuthing"
