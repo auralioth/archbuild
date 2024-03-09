@@ -74,8 +74,6 @@ while read -r group; do
 	fi
 done < <(echo "$data" | jq -c '.')
 
-echo ${#packages_need_update[@]}
-
 if [ ${#packages_need_update[@]} -eq 0 ]; then
 	echo "status=false" >>$GITHUB_OUTPUT
 else

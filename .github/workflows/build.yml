@@ -44,8 +44,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: remove oldver file
-        run: rm -f ${{ needs.check.outputs.oldver_file }}
       - uses: ./arch-build
         id: build
         with:
@@ -83,6 +81,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: remove oldver file
+        run: rm -f ${{ needs.check.outputs.oldver_file }}
       - uses: actions/download-artifact@v4
         with:
           merge-multiple: true
