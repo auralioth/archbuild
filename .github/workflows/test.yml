@@ -1,9 +1,6 @@
 name: Build and release
 on:
   workflow_dispatch:
-  push:
-  schedule:
-    - cron: "0 */12 * * *"
 
 jobs:
   check:
