@@ -8,6 +8,8 @@ cat <<EOM >>/etc/pacman.conf
 Include = /etc/pacman.d/mirrorlist
 EOM
 
+pacman -Syu --noconfirm
+
 chmod -R a+rw .
 
 cd $pkg || exit 1
