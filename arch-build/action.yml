@@ -1,0 +1,21 @@
+name: 'Build AUR Package'
+description: 'Build an ArchLinux package in Docker container'
+branding:
+  icon: user-check
+  color: gray-dark
+inputs:
+  pkg:
+    description: 'Package to build' 
+    required: true
+  verson:
+    description: 'Version of the package'
+    required: true
+outputs:
+  asset:
+    description: 'Newest package asset'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.pkg }}
+    - ${{ inputs.version }}

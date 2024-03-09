@@ -1,8 +1,0 @@
-[__config__]
-oldver = "old_ver.json"
-newver = "new_ver.json"
-
-[dae-rules-dat]
-source = "github"
-github = "Loyalsoldier/v2ray-rules-dat"
-use_latest_release = true

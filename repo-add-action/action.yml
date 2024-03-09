@@ -7,15 +7,15 @@ inputs:
   repo_owner:
     description: 'GitHub repository owner'
     required: true
-    default: ""
+    default: ${{ github.repository_owner }}
   repo_full:
     description: 'GitHub repository'
     required: true
-    default: ""
+    default: ${{ github.repository }}
   path:
     description: 'Where the artifact exists'
     required: true
-    default: ""
+    default: ${{ github.workspace }}
 runs:
   using: 'docker'
   image: 'Dockerfile'

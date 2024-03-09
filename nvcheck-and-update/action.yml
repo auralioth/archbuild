@@ -1,0 +1,26 @@
+name: 'Build AUR Package'
+description: 'Build an ArchLinux package in Docker container'
+branding:
+  icon: user-check
+  color: gray-dark
+inputs:
+  nvfile:
+    description: 'nvchecker version files name'
+    required: false
+    default: "nvchecker.toml"
+  changed_files:
+    description: 'Changed files'
+    required: false
+outputs:
+  status:
+    description: 'Update status'
+  matrix:
+    description: 'Packages need to update matrix'
+  oldver_file_updated:
+    description: 'Old version file(updated)'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.nvfile }}
+    - ${{ inputs.changed_files }}

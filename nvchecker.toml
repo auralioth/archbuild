@@ -1,0 +1,43 @@
+[__config__]
+oldver = "old_ver.json"
+newver = "new_ver.json"
+
+[adobe-source-han-sans-otc-fonts]
+source = "github"
+github = "adobe-fonts/source-han-sans"
+use_latest_release = true
+
+[adobe-source-han-serif-otc-fonts]
+source = "github"
+github = "adobe-fonts/source-han-serif"
+use_latest_release = true
+
+[auth-thu-git]
+source = "github"
+github = "z4yx/GoAuthing"
+
+[clash-meta-aplha-git]
+source = "github"
+github = "MetaCubeX/mihomo"
+
+[ctex-windows-fonts]
+source = "github"
+github = "auryouth/winfonts"
+use_latest_release = true
+prefix = "v"
+
+[dae-git]
+source = "github"
+github = "daeuniverse/dae"
+
+[dae-rules-dat]
+source = "github"
+github = "Loyalsoldier/v2ray-rules-dat"
+use_latest_release = true
+
+[noto-fonts-all]
+source = 'github'
+github = 'notofonts/notofonts.github.io'
+use_max_tag = true
+prefix = 'noto-monthly-release-'
+include_regex = 'noto-monthly-release.*'
