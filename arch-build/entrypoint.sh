@@ -3,9 +3,9 @@
 pkg=$INPUT_PKG
 version=$INPUT_VERSION
 
-cat <<EOM >>/etc/pacman.conf \
-[multilib] \
-Include = /etc/pacman.d/mirrorlist \
+cat <<EOM >>/etc/pacman.conf
+[multilib]
+Include = /etc/pacman.d/mirrorlist
 EOM
 
 cd $pkg || exit 1
