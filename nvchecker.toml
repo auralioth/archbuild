@@ -16,7 +16,7 @@ use_latest_release = true
 source = "github"
 github = "z4yx/GoAuthing"
 
-[clash-meta-aplha-git]
+[clash-meta-alpha-git]
 source = "github"
 github = "MetaCubeX/mihomo"
 
