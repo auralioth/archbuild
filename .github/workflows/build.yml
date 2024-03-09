@@ -8,6 +8,7 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
+    permissions: write-all
     outputs:
       matrix: ${{ steps.checker.outputs.matrix }}
       status: ${{ steps.checker.outputs.status }}
