@@ -21,7 +21,7 @@ jobs:
               echo "changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | xargs)" >> $GITHUB_OUTPUT
       - name: nvchecker and update
         id: checker
-        uses: ./nvchecker-and-update
+        uses: ./nvcheck-and-update
         with:
           changed_files: ${{ steps.changed-files.outputs.changed_files }}
       - name: upload oldver file
