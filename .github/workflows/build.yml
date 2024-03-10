@@ -28,7 +28,7 @@ jobs:
           echo "changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | xargs)" >> $GITHUB_OUTPUT
       - name: Set keyfile.toml
         run: |
-          sed -i -e "s/__GITHUB_ACCESS_TOKEN__/${{ github.token }}/g" $KEYFILE
+          sed -i -e "s/__GITHUB_ACCESS_TOKEN__/${{ github.token }}/g" ${{ env.KEYFILE }}
       - name: nvchecker and update
         id: checker
         uses: ./nvcheck-and-update
