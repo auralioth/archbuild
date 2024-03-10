@@ -32,6 +32,7 @@ fi
 
 if [ ${#remove_pkgs[@]} -gt 0 ]; then
 	for key in "${remove_pkgs[@]}"; do
+		echo $key
 		jq "del(.\"$key\")" "$oldver_file" >"$oldver_file.tmp" && mv "$oldver_file.tmp" "$oldver_file"
 	done
 	echo "remove_status=true" >>$GITHUB_OUTPUT
