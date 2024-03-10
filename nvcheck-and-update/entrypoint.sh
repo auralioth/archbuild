@@ -5,6 +5,7 @@ changed_files=$INPUT_CHANGED_FILES
 keyfile=$INPUT_KEYFILE
 
 oldver_file=$(cat $nvfile | grep -n "^oldver" | awk -F '\"' '{print $2}')
+newver_file=$(cat $nvfile | grep -n "^newver" | awk -F '\"' '{print $2}')
 
 levels=(warning warn error exception critical)
 keys=(name old_version version event level)
@@ -15,6 +16,29 @@ else
 	data=$(nvchecker -t 3 --logger json -c $nvfile --keyfile $keyfile)
 fi
 
+# 处理是否有包删除
+remove_pkgs=()
+
+if [ -f $oldver_file ]; then
+	old_packages=$(jq -r 'keys_unsorted[]' $oldver_file | tr '\n' ' ')
+	new_packages=$(jq -r 'keys_unsorted[]' $newver_file | tr '\n' ' ')
+
+	for old_package in ${old_packages}; do
+		if [[ ! "${new_packages}" =~ "${old_package}" ]]; then
+			remove_pkgs+=($old_package)
+		fi
+	done
+fi
+
+if [ ${#remove_pkgs[@]} -gt 0 ]; then
+	echo "remove_status=true" >>$GITHUB_OUTPUT
+	echo "remove_pkgs=${remove_pkgs[@]}" >>$GITHUB_OUTPUT
+else
+	echo "remove_status=false" >>$GITHUB_OUTPUT
+fi
+
+
+# 处理更新
 packages_need_update=()
 versions=()
 old_pkgvers=()
@@ -60,9 +84,9 @@ while read -r group; do
 done < <(echo "$data" | jq -c '.')
 
 if [ ${#packages_need_update[@]} -eq 0 ]; then
-	echo "status=false" >>$GITHUB_OUTPUT
+	echo "build_status=false" >>$GITHUB_OUTPUT
 else
-	echo "status=true" >>$GITHUB_OUTPUT
+	echo "build_status=true" >>$GITHUB_OUTPUT
 
 	# matrix="{\"pkg\": ["
 	# for package in "${packages_need_update[@]}"; do

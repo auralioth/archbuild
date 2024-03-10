@@ -16,12 +16,16 @@ inputs:
     required: false
     default: ""
 outputs:
-  status:
-    description: "Update status"
+  build_status:
+    description: "Build status"
+  remove_pkgs:
+    description: "Packages need to remove from release and repo"
   matrix:
     description: "Packages need to update matrix"
   oldver_file:
     description: "Old version file(updated)"
+  remove_status:
+    description: "Remove status"
 runs:
   using: "docker"
   image: "Dockerfile"

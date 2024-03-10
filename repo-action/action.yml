@@ -1,4 +1,4 @@
-name: "Repo-Add"
+name: "Repo Action"
 description: "Build archlinux repo"
 branding:
   icon: user-check
@@ -16,6 +16,14 @@ inputs:
     description: "Where the artifact exists"
     required: false
     default: ${{ github.workspace }}
+  request:
+    description: "Request"
+    required: true
+    default: ""
+  remove_pkgs:
+    description: "Packages need to remove from release and repo"
+    required: false
+    default: ""
 runs:
   using: "docker"
   image: "Dockerfile"
@@ -23,3 +31,5 @@ runs:
     - ${{ inputs.repo_owner }}
     - ${{ inputs.repo_full }}
     - ${{ inputs.path }}
+    - ${{ inputs.request }}
+    - ${{ inputs.pkgs }}
