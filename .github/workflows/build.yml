@@ -29,7 +29,7 @@ jobs:
       - name: Set keyfile.toml
         run: |
           if [ ! -f ${{ env.KEYFILE }} ]; then
-            echo "keyfile.toml not found"
+            echo "${{ env.KEYFILE }} not found"
             exit 1
           fi
           sed -i -e "s/__GITHUB_ACCESS_TOKEN__/${{ github.token }}/g" ${{ env.KEYFILE }}
