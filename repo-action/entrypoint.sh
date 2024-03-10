@@ -6,12 +6,13 @@ path=$INPUT_PATH
 request=$INPUT_REQUEST
 remove_pkgs=$INPUT_REMOVE_PKGS
 
-chmod -R a+rw .
-
-assets=$(gh release view --json assets | jq -r '.assets[].name')
-
-if [[ ${assets} =~ $repo_owner.db.tar.gz && ${assets} =~ $repo_owner.files.tar.gz ]]; then
+if gh release download -p "$repo_owner.db.tar.gz" -R $repo_full -D $path; then
 	gh release download -p "$repo_owner.db.tar.gz" -R $repo_full -D $path
+else
+	exit 0
+fi
+
+if gh release download -p "$repo_owner.files.tar.gz" -R $repo_full -D $path; then
 	gh release download -p "$repo_owner.files.tar.gz" -R $repo_full -D $path
 else
 	exit 0
