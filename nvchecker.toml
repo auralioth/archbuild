@@ -16,9 +16,9 @@ use_max_tag = true
 from_pattern = "^(\\d+\\.\\d+).*"
 to_pattern = "\\1"
 
-#[auth-thu-git]
-#source = "github"
-#github = "z4yx/GoAuthing"
+[auth-thu-git]
+source = "github"
+github = "z4yx/GoAuthing"
 
 [clash-meta-alpha-git]
 source = "github"
