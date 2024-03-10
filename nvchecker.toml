@@ -5,12 +5,16 @@ newver = "new_ver.json"
 [adobe-source-han-sans-otc-fonts]
 source = "github"
 github = "adobe-fonts/source-han-sans"
-use_latest_release = true
+use_max_tag = true
+from_pattern = "^(\\d+\\.\\d+).*"
+to_pattern = "\\1"
 
 [adobe-source-han-serif-otc-fonts]
 source = "github"
 github = "adobe-fonts/source-han-serif"
-use_latest_release = true
+use_max_tag = true
+from_pattern = "^(\\d+\\.\\d+).*"
+to_pattern = "\\1"
 
 [auth-thu-git]
 source = "github"
