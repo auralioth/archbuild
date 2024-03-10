@@ -6,7 +6,7 @@ branding:
 inputs:
   nvfile:
     description: "nvchecker version files name"
-    required: true
+    required: false
     default: "nvchecker.toml"
   changed_files:
     description: "Changed files"

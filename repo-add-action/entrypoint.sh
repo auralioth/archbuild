@@ -1,10 +1,10 @@
 #!/bin/bash
 
-repo_owner=$INPUT_REPO_ONWER
+repo_owner=$INPUT_REPO_OWNER
 repo_full=$INPUT_REPO_FULL
 path=$INPUT_PATH
 
-gh release download -p "$repo_onwer.db.tar.gz" -R $repo_full
+gh release download -p "$repo_owner.db.tar.gz" -R $repo_full
 
 repo-add -R $path/$repo_owner.db.tar.gz ./*.pkg.tar.zst
 ls -l

@@ -6,15 +6,15 @@ branding:
 inputs:
   repo_owner:
     description: "GitHub repository owner"
-    required: true
+    required: false
     default: ${{ github.repository_owner }}
   repo_full:
     description: "GitHub repository"
-    required: true
+    required: false
     default: ${{ github.repository }}
   path:
     description: "Where the artifact exists"
-    required: true
+    required: false
     default: ${{ github.workspace }}
 runs:
   using: "docker"
