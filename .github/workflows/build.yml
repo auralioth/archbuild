@@ -31,8 +31,8 @@ jobs:
       - name: Set keyfile.toml
         run: |
           if [ ! -f ${{ env.KEYFILE }} ]; then
-            echo "${{ env.KEYFILE }} not found"
-            exit 1
+              echo "${{ env.KEYFILE }} not found"
+              exit 1
           fi
           sed -i -e "s/__GITHUB_ACCESS_TOKEN__/${{ github.token }}/g" ${{ env.KEYFILE }}
       - name: nvchecker and update
@@ -106,10 +106,12 @@ jobs:
           assets=$(gh release view --json assets | jq -r '.assets[].name')
           pkg_assets=$(echo $assets | grep -E "^${{ matrix.pkg }}-${{ matrix.old_pkgver }}.*pkg.tar.zst")
           if [ -n "$pkg_assets" ]; then
-                  for asset in $pkg_assets; do
-                          echo "Deleting asset: $asset"
-                          gh release delete-asset ${{ env.RELEASE_TAG }} $asset -y
-                  done
+              for asset in $pkg_assets; do
+                  echo "Deleting asset: $asset"
+                  gh release delete-asset ${{ env.RELEASE_TAG }} $asset -y
+              done
+          else
+              exit 0
           fi
   Release:
     needs: [Build, Repo_Remove]

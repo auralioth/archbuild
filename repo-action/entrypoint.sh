@@ -6,8 +6,14 @@ path=$INPUT_PATH
 request=$INPUT_REQUEST
 remove_pkgs=$INPUT_REMOVE_PKGS
 
-gh release download -p "$repo_owner.db.tar.gz" -R $repo_full -D $path
-gh release download -p "$repo_owner.files.tar.gz" -R $repo_full -D $path
+assets=$(gh release view --json assets | jq -r '.assets[].name')
+
+if [[ ${assets} =~ "$repo_owner.db.tar.gz" && ${assets} =~ "$repo_owner.files.tar.gz" ]]; then
+	gh release download -p "$repo_owner.db.tar.gz" -R $repo_full -D $path
+	gh release download -p "$repo_owner.files.tar.gz" -R $repo_full -D $path
+else
+	exit 0
+fi
 
 if [ $request = "add" ]; then
 	repo-add -R $path/$repo_owner.db.tar.gz ./*.pkg.tar.zst
