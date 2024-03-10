@@ -42,7 +42,7 @@ jobs:
           changed_files: ${{ steps.changed-files.outputs.changed_files }}
           keyfile: ${{ env.KEYFILE }}
       - uses: stefanzweifel/git-auto-commit-action@v5
-        if: steps.checker.outputs.build_status == 'true'
+        if: steps.checker.outputs.build_status == 'true' || steps.checker.outputs.remove_status == 'true'
         with:
           file_pattern: ${{ steps.checker.outputs.oldver_file }}
           commit_message: ⏰ auto updated oldver file

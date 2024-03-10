@@ -31,12 +31,14 @@ if [ -f $oldver_file ]; then
 fi
 
 if [ ${#remove_pkgs[@]} -gt 0 ]; then
+	for key in "${remove_pkgs[@]}"; do
+		jq "del(.\"$key\")" "$oldver_file" >"$oldver_file.tmp" && mv "$oldver_file.tmp" "$oldver_file"
+	done
 	echo "remove_status=true" >>$GITHUB_OUTPUT
 	echo "remove_pkgs=${remove_pkgs[@]}" >>$GITHUB_OUTPUT
 else
 	echo "remove_status=false" >>$GITHUB_OUTPUT
 fi
-
 
 # 处理更新
 packages_need_update=()
