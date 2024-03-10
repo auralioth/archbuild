@@ -104,14 +104,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           assets=$(gh release view --json assets | jq -r '.assets[].name')
-          pkg_assets=$(echo $assets | grep -E "^${{ matrix.pkg }}-${{ matrix.old_pkgver }}.*pkg.tar.zst")
-          if [ -n "$pkg_assets" ]; then
+          if [[ "$assets" =~ ^${{ matrix.pkg }}-${{ matrix.old_pkgver }}.*pkg.tar.zst ]]; then
+              pkg_assets=$(echo "$assets" | grep -E "^${{ matrix.pkg }}-${{ matrix.old_pkgver }}.*pkg.tar.zst")
               for asset in $pkg_assets; do
                   echo "Deleting asset: $asset"
-                  gh release delete-asset ${{ env.RELEASE_TAG }} $asset -y
+                  gh release delete-asset packages "$asset" -y
               done
           else
-              exit 0
+              echo "No matching assets found. Exiting with code 0."
           fi
   Release:
     needs: [Build, Repo_Remove]
