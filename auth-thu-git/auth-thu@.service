@@ -6,10 +6,10 @@ Wants=network-online.target
 StartLimitIntervalSec=0
 
 [Service]
-ExecStartPre=-/usr/local/bin/auth-thu -D deauth
-ExecStartPre=-/usr/local/bin/auth-thu -D auth
-ExecStartPre=-/usr/local/bin/auth-thu -D login
-ExecStart=/usr/local/bin/auth-thu -D online
+ExecStartPre=-/usr/bin/auth-thu -D deauth
+ExecStartPre=-/usr/bin/auth-thu -D auth
+ExecStartPre=-/usr/bin/auth-thu -D login
+ExecStart=/usr/bin/auth-thu -D online
 User=%i
 Restart=always
 RestartSec=5
