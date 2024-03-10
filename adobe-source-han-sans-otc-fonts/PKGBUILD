@@ -1,7 +1,7 @@
 _pkgbase=adobe-source-han-sans
 _pkgname=SourceHanSansOTC
 pkgname=$_pkgbase-otc-fonts
-pkgver=2.004R
+pkgver=2.004
 pkgrel=3
 pkgdesc='Adobe Source Han Sans - A set of Pan-CJK fonts designed to complement Source Sans Pro'
 arch=('any')
