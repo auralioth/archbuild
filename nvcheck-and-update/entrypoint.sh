@@ -31,10 +31,6 @@ while read -r group; do
 		exit 1
 	fi
 
-	if [ "$event" = "up-to-date" ]; then
-		continue
-	fi
-
 	if comm -12 <(find "$name" -type f | sort) <(echo "$changed_files" | tr ' ' '\n' | sort) | grep -q .; then
 		file_changed="true"
 	else
@@ -52,7 +48,15 @@ while read -r group; do
 
 		nvtake --ignore-nonexistent -c $nvfile $name
 
+		continue
 	fi
+
+	if [ "$event" = "up-to-date" ]; then
+		continue
+	else
+		exit 1
+	fi
+
 done < <(echo "$data" | jq -c '.')
 
 if [ ${#packages_need_update[@]} -eq 0 ]; then
