@@ -1,7 +1,7 @@
 pkgname=dae-rules-dat
 _pkgname=v2ray-rules-dat
 pkgver=202403092210
-pkgrel=1
+pkgrel=2
 pkgdesc="Route rules for dae"
 arch=('any')
 url="https://github.com/Loyalsoldier/v2ray-rules-dat"
