@@ -112,6 +112,7 @@ jobs:
               done
           else
               echo "No matching assets found. Exiting with code 0."
+              exit 0
           fi
   Release:
     needs: [Build, Repo_Remove]
