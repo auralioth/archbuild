@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: "0 */12 * * *"
 
-env: 
+env:
   RELEASE_TAG: packages
 
 jobs:
@@ -28,6 +28,10 @@ jobs:
           echo "changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | xargs)" >> $GITHUB_OUTPUT
       - name: Set keyfile.toml
         run: |
+          if [ ! -f ${{ env.KEYFILE }} ]; then
+            echo "keyfile.toml not found"
+            exit 1
+          fi
           sed -i -e "s/__GITHUB_ACCESS_TOKEN__/${{ github.token }}/g" ${{ env.KEYFILE }}
       - name: nvchecker and update
         id: checker
