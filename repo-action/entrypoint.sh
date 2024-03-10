@@ -7,13 +7,13 @@ request=$INPUT_REQUEST
 remove_pkgs=$INPUT_REMOVE_PKGS
 
 if gh release download -p "$repo_owner.db.tar.gz" -R $repo_full -D $path; then
-	gh release download -p "$repo_owner.db.tar.gz" -R $repo_full -D $path
+	echo "download $repo_owner.db.tar.gz"
 else
 	exit 0
 fi
 
 if gh release download -p "$repo_owner.files.tar.gz" -R $repo_full -D $path; then
-	gh release download -p "$repo_owner.files.tar.gz" -R $repo_full -D $path
+	echo "download $repo_owner.files.tar.gz"
 else
 	exit 0
 fi
