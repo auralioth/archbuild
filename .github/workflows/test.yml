@@ -1,12 +1,32 @@
-name: Build and release
+name: Skipped Job Test
+
 on:
   workflow_dispatch:
-
+  
 jobs:
-  check:
+  Skipped-Job:
+    name: skipped job
+    runs-on: ubtunu-latest
+    if: 1 != 1
+    steps:
+    - name: write to console 1
+      run: echo "I should be skipped"
+
+  Needs-Job:
+    name: needs conditional job
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout to repository
-        uses: actions/checkout@v4
-      - name: echo token
-        run: echo ${{ secrets.GITHUB_TOKEN }}
+      - name: write to console 2
+        run: echo "Needs-Job completed"
+  
+  Next:
+    name: Next job
+    needs: [ Skipped-Job, Needs-Job ]
+    if: always() && needs.Needs-Job.result == 'success' && needs.Skipped-Job.result == 'skipped' # uncommenting this condition causes the job to not be skipped
+    # if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: write to console 3
+        run: |
+          echo needs.Needs-Job.result: ${{ needs.Needs-Job.result }}
+          echo needs.Skipped-Job.result: ${{ needs.Skipped-Job.result }}

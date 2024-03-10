@@ -116,7 +116,7 @@ jobs:
           fi
   Release:
     needs: [Build, Repo_Remove]
-    if: ${{ !cancelled() && needs.Build.result == 'success' && needs.Repo_Remove.result == 'success'}}
+    if: ${{ !cancelled() && needs.Build.result == 'success' && needs.Repo_Remove.result != 'failure' }}
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
