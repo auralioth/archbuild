@@ -7,6 +7,7 @@ request=$INPUT_REQUEST
 remove_pkgs=$INPUT_REMOVE_PKGS
 
 gh release download -p "$repo_owner.db.tar.gz" -R $repo_full -D $path
+gh release download -p "$repo_owner.files.tar.gz" -R $repo_full -D $path
 
 if [ $request = "add" ]; then
 	repo-add -R $path/$repo_owner.db.tar.gz ./*.pkg.tar.zst
