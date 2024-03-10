@@ -1,7 +1,7 @@
 _pkgbase=adobe-source-han-serif
 _pkgname=SourceHanSerifOTC
 pkgname=$_pkgbase-otc-fonts
-pkgver=2.002R
+pkgver=2.002
 pkgrel=3
 pkgdesc="Adobe Source Han Serif - Pan-CJK OpenType/CFF Collection fonts"
 arch=('any')
