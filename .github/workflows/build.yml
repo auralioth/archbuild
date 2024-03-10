@@ -76,7 +76,7 @@ jobs:
                           echo "Deleting asset: $asset"
                           gh release delete-asset ${{github.ref_name}} $asset -y
                   done
-          else
+          fi
   Release:
     needs: Build
     runs-on: ubuntu-latest
