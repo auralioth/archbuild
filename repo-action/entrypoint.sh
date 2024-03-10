@@ -6,6 +6,8 @@ path=$INPUT_PATH
 request=$INPUT_REQUEST
 remove_pkgs=$INPUT_REMOVE_PKGS
 
+chmod -R a+rw .
+
 assets=$(gh release view --json assets | jq -r '.assets[].name')
 
 if [[ ${assets} =~ $repo_owner.db.tar.gz && ${assets} =~ $repo_owner.files.tar.gz ]]; then

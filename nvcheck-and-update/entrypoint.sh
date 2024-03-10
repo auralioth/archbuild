@@ -4,6 +4,8 @@ nvfile=$INPUT_NVFILE
 changed_files=$INPUT_CHANGED_FILES
 keyfile=$INPUT_KEYFILE
 
+chmod -R a+rw .
+
 oldver_file=$(cat $nvfile | grep -n "^oldver" | awk -F '\"' '{print $2}')
 newver_file=$(cat $nvfile | grep -n "^newver" | awk -F '\"' '{print $2}')
 
