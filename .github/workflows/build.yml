@@ -99,9 +99,10 @@ jobs:
         with:
           tag_name: ${{ env.RELEASE_TAG }}
           files: |
-            ${{ github.workspace }}/*.pkg.tar.*
-            ${{ github.workspace }}/*.files.*
-            ${{ github.workspace }}/*.db.*
+            ${{ github.workspace }}/*.pkg.tar.zst
+            ${{ github.workspace }}/*.files
+            ${{ github.workspace }}/*.db
+            ${{ github.workspace }}/*.db.tar.gz
           generate_release_notes: true
       - name: Send notify to telegram
         uses: appleboy/telegram-action@master
