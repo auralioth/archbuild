@@ -7,7 +7,7 @@ pkgdesc='Adobe Source Han Sans - A set of Pan-CJK fonts designed to complement S
 arch=('any')
 license=('OFL-1.1-RFN')
 url='https://github.com/adobe-fonts/source-han-sans'
-source=("https://github.com/adobe-fonts/source-han-sans/releases/download/${pkgver}/SourceHanSansOTC.zip")
+source=("https://github.com/adobe-fonts/source-han-sans/releases/download/${pkgver}R/SourceHanSansOTC.zip")
 sha512sums=('e5448965ad61bfe6e2dab9bf42316cc32628616c45e63df8a09e5cbbe5e1ee02f8cacc1b76e55ae9996b2051c503877daf8294c0abf9854b2be67ce80a6a13db')
 
 package() {
