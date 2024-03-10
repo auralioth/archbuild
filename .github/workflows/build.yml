@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: "0 */12 * * *"
 
+env: 
+  RELEASE_TAG: packages
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -67,14 +70,13 @@ jobs:
           if-no-files-found: error
       - name: Delete old asset
         env:
-          old_pkgver: ${{ matrix.old_pkgver }}
           GH_TOKEN: ${{ github.token }}
         run: |
-          assets=$(gh release view --json assets | jq -r '.assets[].name' | grep -E "^${{ matrix.pkg }}-$old_pkgver.*pkg.tar.zst")
+          assets=$(gh release view --json assets | jq -r '.assets[].name' | grep -E "^${{ matrix.pkg }}-${{ matrix.old_pkgver }}.*pkg.tar.zst")
           if [ -n "$assets" ]; then
                   for asset in $assets; do
                           echo "Deleting asset: $asset"
-                          gh release delete-asset ${{github.ref_name}} $asset -y
+                          gh release delete-asset ${{ env.RELEASE_TAG }} $asset -y
                   done
           fi
   Release:
@@ -95,7 +97,7 @@ jobs:
       - name: Upload Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: packages
+          tag_name: ${{ env.RELEASE_TAG }}
           files: |
             ${{ github.workspace }}/*.pkg.tar.*
             ${{ github.workspace }}/*.files.*
