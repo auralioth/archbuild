@@ -70,9 +70,9 @@ jobs:
           old_pkgver: ${{ matrix.old_pkgver }}
           GH_TOKEN: ${{ github.token }}
         run: |
-          assets=$(gh release view --json assets | jq -r '.assets[].name' | grep -o "^${{ matrix.pkg }}-$old_pkgver.*pkg.tar.zst")
-          if [ ${#assets[@]} -gt 0 ]; then
-                  for asset in "${assets[@]}"; do
+          assets=$(gh release view --json assets | jq -r '.assets[].name' | grep -E "^${{ matrix.pkg }}-$old_pkgver.*pkg.tar.zst")
+          if [ -n "$assets" ]; then
+                  for asset in $assets; do
                           echo "Deleting asset: $asset"
                           gh release delete-asset ${{github.ref_name}} $asset -y
                   done

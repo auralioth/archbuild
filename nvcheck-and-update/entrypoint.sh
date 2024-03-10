@@ -69,7 +69,7 @@ else
 
 	matrix="{\"include\": ["
 	for ((i = 0; i < ${#packages_need_update[@]}; i++)); do
-		matrix="${matrix}{\"pkg\": \"${packages_need_update[i]}\", \"version\": \"${versions[i]}\", \"oldver\": \"${old_pkgvers[i]}\"}"
+		matrix="${matrix}{\"pkg\": \"${packages_need_update[i]}\", \"version\": \"${versions[i]}\", \"old_pkgver\": \"${old_pkgvers[i]}\"}"
 		if [ $i -lt $((${#packages_need_update[@]} - 1)) ]; then
 			matrix="${matrix}, "
 		fi
