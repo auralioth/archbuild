@@ -20,15 +20,15 @@ to_pattern = "\\1"
 source = "github"
 github = "z4yx/GoAuthing"
 
-#[clash-meta-alpha-git]
-#source = "github"
-#github = "MetaCubeX/mihomo"
+[clash-meta-alpha-git]
+source = "github"
+github = "MetaCubeX/mihomo"
 
-#[ctex-windows-fonts]
-#source = "github"
-#github = "auryouth/winfonts"
-#use_latest_release = true
-#prefix = "v"
+[ctex-windows-fonts]
+source = "github"
+github = "auryouth/winfonts"
+use_latest_release = true
+prefix = "v"
 
 [dae-git]
 source = "github"
