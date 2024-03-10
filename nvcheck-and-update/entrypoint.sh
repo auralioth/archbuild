@@ -2,27 +2,22 @@
 
 nvfile=$INPUT_NVFILE
 changed_files=$INPUT_CHANGED_FILES
-
-# 初始化
-# useradd builder -m
-# echo "builder ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
-# chmod -R a+rw .
-
-# cat <<EOM >>/etc/pacman.conf
-# [multilib]
-# Include = /etc/pacman.d/mirrorlist
-# EOM
+keyfile=$INPUT_KEYFILE
 
 oldver_file=$(cat $nvfile | grep -n "^oldver" | awk -F '\"' '{print $2}')
-# newver_file=$(cat $nvfile | grep -n "^newver" | awk -F '\"' '{print $2}')
 
 levels=(warning warn error exception critical)
 keys=(name old_version version event level)
 
-data=$(nvchecker -t 3 --logger json -c $nvfile)
+if [ -z "$keyfile" ]; then
+	data=$(nvchecker -t 3 --logger json -c $nvfile)
+else
+	data=$(nvchecker -t 3 --logger json -c $nvfile --keyfile $keyfile)
+fi
 
 packages_need_update=()
 versions=()
+old_pkgvers=()
 
 while read -r group; do
 	for key in "${keys[@]}"; do
@@ -48,26 +43,15 @@ while read -r group; do
 
 	if [ "$event" = "updated" ] || [ "$file_changed" = "true" ]; then
 
+		# 可以用于后续 delete-asset
+		old_pkgver=$(cat $name/PKGBUILD | grep -n "^pkgver=" | awk -F= '{print $2}')
+
 		packages_need_update+=($name)
 		versions+=($version)
+		old_pkgvers+=($old_pkgver)
 
 		nvtake --ignore-nonexistent -c $nvfile $name
 
-		# 用于后续 delete-asset
-		# old_pkgver=$(cat PKGBUILD | grep -n "^pkgver=" | awk -F= '{print $2}')
-
-		# if ! grep -nq "^pkgver()" $name/PKGBUILD; then
-		# 	sed -i "s/^pkgver=.*/pkgver=$version/" $name/PKGBUILD
-		# fi
-		# sudo -u builder updpkgsums
-		# sudo -u builder bash -c 'export MAKEFLAGS=j$(nproc) && makepkg -s --noconfirm'
-		# asset=$(basename $(sudo -u builder makepkg --packagelist))
-
-		# echo "status=$status" >>$GITHUB_OUTPUT
-
-		# echo "commit_file=$pkgname/PKGBUILD $pkgname/$oldver_file $pkgname/$newver_file" >>$GITHUB_OUTPUT
-
-		# echo "asset=$asset" >>$GITHUB_OUTPUT
 	fi
 done < <(echo "$data" | jq -c '.')
 
@@ -85,7 +69,7 @@ else
 
 	matrix="{\"include\": ["
 	for ((i = 0; i < ${#packages_need_update[@]}; i++)); do
-		matrix="${matrix}{\"pkg\": \"${packages_need_update[i]}\", \"version\": \"${versions[i]}\"}"
+		matrix="${matrix}{\"pkg\": \"${packages_need_update[i]}\", \"version\": \"${versions[i]}\", \"oldver\": \"${old_pkgvers[i]}\"}"
 		if [ $i -lt $((${#packages_need_update[@]} - 1)) ]; then
 			matrix="${matrix}, "
 		fi

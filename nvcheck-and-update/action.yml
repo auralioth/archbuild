@@ -11,6 +11,10 @@ inputs:
   changed_files:
     description: "Changed files"
     required: true
+  keyfile:
+    description: "Nvchecker key file"
+    required: false
+    default: ""
 outputs:
   status:
     description: "Update status"

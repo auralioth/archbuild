@@ -8,22 +8,5 @@ jobs:
     steps:
       - name: Checkout to repository
         uses: actions/checkout@v4
-      - name: upload oldver file
-        uses: actions/upload-artifact@v4
-        with:
-          name: oldver_file
-          path: new_ver.json
-          if-no-files-found: error
-  Build:
-    permissions: write-all
-    needs: check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: remove oldver file
-        run: rm -f new_ver.json
-      - uses: actions/download-artifact@v4
-        with:
-          name: oldver_file
-          path: .
+      - name: echo token
+        run: echo ${{ secrets.GITHUB_TOKEN }}
