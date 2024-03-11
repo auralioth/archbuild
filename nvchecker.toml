@@ -16,10 +16,6 @@ use_max_tag = true
 from_pattern = "^(\\d+\\.\\d+).*"
 to_pattern = "\\1"
 
-[auth-thu-git]
-source = "github"
-github = "z4yx/GoAuthing"
-
 [clash-meta-alpha-git]
 source = "github"
 github = "MetaCubeX/mihomo"
@@ -45,3 +41,7 @@ github = 'notofonts/notofonts.github.io'
 use_max_tag = true
 prefix = 'noto-monthly-release-'
 include_regex = 'noto-monthly-release.*'
+
+[tunet-rust-git]
+source = 'github'
+github = 'Berrysoft/tunet-rust'
