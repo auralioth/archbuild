@@ -13,7 +13,7 @@ provides=("${_pkgname}")
 source=("git+${url}.git"
 	"tunet@.service")
 sha512sums=('SKIP'
-	'026f21b7bfda8232539caee1190efa6297e9e6d76903a4542e7e41f8c1fe06fd5d3d7909763731150a2572fc5171141c7623226e4ac61fdaff0677144c2999af')
+            '026f21b7bfda8232539caee1190efa6297e9e6d76903a4542e7e41f8c1fe06fd5d3d7909763731150a2572fc5171141c7623226e4ac61fdaff0677144c2999af')
 
 pkgver() {
 	cd "${_pkgname}/"
