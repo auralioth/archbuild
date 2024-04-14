@@ -1,6 +1,6 @@
 pkgname=dae-rules-dat
 _pkgname=v2ray-rules-dat
-pkgver=202404122208
+pkgver=202404132209
 pkgrel=2
 pkgdesc="Route rules for dae"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-3.0')
 source=("https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/${pkgver}/geoip.dat"
 	"https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/${pkgver}/geosite.dat")
 sha256sums=('8747981cd3d1c803244fcd4bee3f10e9e2d92c62901c5174158d10d173520f72'
-            'f75b3364397eda1cf26b570865b90ff0001e89c28634b16b05f7e9def0e92edb')
+            'b4875e9f6ee4453f66332b23a02206b6611de4bce693d74b376096f61691c8b9')
 
 package() {
 	cd "$srcdir"
