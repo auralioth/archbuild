@@ -19,6 +19,7 @@ to_pattern = "\\1"
 [clash-meta-alpha-git]
 source = "github"
 github = "MetaCubeX/mihomo"
+branch = "Alpha"
 
 [ctex-windows-fonts]
 source = "github"
