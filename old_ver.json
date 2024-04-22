@@ -1,10 +1,48 @@
 {
   "version": 2,
   "data": {
+    "adobe-source-han-sans-otc-fonts": {
+      "version": "2.004",
+      "gitref": "refs/tags/2.004R",
+      "revision": "a8b073bbf80f7226af03abeeb31e27017d5e3f67",
+      "url": "https://github.com/adobe-fonts/source-han-sans/releases/tag/2.004R"
+    },
+    "adobe-source-han-serif-otc-fonts": {
+      "version": "2.002",
+      "gitref": "refs/tags/2.002R",
+      "revision": "422e1ad801c8bcd2257941c9d47863ddfa29b21c",
+      "url": "https://github.com/adobe-fonts/source-han-serif/releases/tag/2.002R"
+    },
+    "clash-meta-alpha-git": {
+      "version": "20240420.142217",
+      "revision": "002b8af94a6a0f73f140d6e11e0ce173805d5472",
+      "url": "https://github.com/MetaCubeX/mihomo/commit/002b8af94a6a0f73f140d6e11e0ce173805d5472"
+    },
+    "ctex-windows-fonts": {
+      "version": "1.0.0",
+      "gitref": "refs/tags/v1.0.0",
+      "url": "https://github.com/auryouth/winfonts/releases/tag/v1.0.0"
+    },
+    "dae-git": {
+      "version": "20240415.112552",
+      "revision": "b5ebd4f8cb82c5a0b44a49b53f3e9df4f01419c8",
+      "url": "https://github.com/daeuniverse/dae/commit/b5ebd4f8cb82c5a0b44a49b53f3e9df4f01419c8"
+    },
     "dae-rules-dat": {
       "version": "202404212209",
       "gitref": "refs/tags/202404212209",
       "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202404212209"
+    },
+    "noto-fonts-all": {
+      "version": "24.4.1",
+      "gitref": "refs/tags/noto-monthly-release-24.4.1",
+      "revision": "2c3d6b5b45f3683bbc6db45048df8e02963ba67b",
+      "url": "https://github.com/notofonts/notofonts.github.io/releases/tag/noto-monthly-release-24.4.1"
+    },
+    "tunet-rust-git": {
+      "version": "20240405.080458",
+      "revision": "7ab0ec9d764eba23a1c6bc3b21b6f5009c4b5d6c",
+      "url": "https://github.com/Berrysoft/tunet-rust/commit/7ab0ec9d764eba23a1c6bc3b21b6f5009c4b5d6c"
     }
   }
 }
