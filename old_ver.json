@@ -14,9 +14,9 @@
       "url": "https://github.com/adobe-fonts/source-han-serif/releases/tag/2.002R"
     },
     "clash-meta-alpha-git": {
-      "version": "20240424.030722",
-      "revision": "2f8f139f7c344b8549d4a9605eaf54c983341101",
-      "url": "https://github.com/MetaCubeX/mihomo/commit/2f8f139f7c344b8549d4a9605eaf54c983341101"
+      "version": "20240425.034853",
+      "revision": "8ff56b5bb83c5c09d592ca22fb831135cf74efac",
+      "url": "https://github.com/MetaCubeX/mihomo/commit/8ff56b5bb83c5c09d592ca22fb831135cf74efac"
     },
     "ctex-windows-fonts": {
       "version": "1.0.0",
@@ -40,9 +40,9 @@
       "url": "https://github.com/notofonts/notofonts.github.io/releases/tag/noto-monthly-release-24.4.1"
     },
     "tunet-rust-git": {
-      "version": "20240405.080458",
-      "revision": "7ab0ec9d764eba23a1c6bc3b21b6f5009c4b5d6c",
-      "url": "https://github.com/Berrysoft/tunet-rust/commit/7ab0ec9d764eba23a1c6bc3b21b6f5009c4b5d6c"
+      "version": "20240425.100823",
+      "revision": "96a7585c1fc71bca0fef37aa9b65e92a7515a621",
+      "url": "https://github.com/Berrysoft/tunet-rust/commit/96a7585c1fc71bca0fef37aa9b65e92a7515a621"
     }
   }
 }
