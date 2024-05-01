@@ -29,20 +29,20 @@
       "url": "https://github.com/daeuniverse/dae/commit/774b4274f5a09292278036b9a31cb7160564ebce"
     },
     "dae-rules-dat": {
-      "version": "202404292209",
-      "gitref": "refs/tags/202404292209",
-      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202404292209"
+      "version": "202404302210",
+      "gitref": "refs/tags/202404302210",
+      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202404302210"
     },
     "noto-fonts-all": {
-      "version": "24.4.1",
-      "gitref": "refs/tags/noto-monthly-release-24.4.1",
-      "revision": "2c3d6b5b45f3683bbc6db45048df8e02963ba67b",
-      "url": "https://github.com/notofonts/notofonts.github.io/releases/tag/noto-monthly-release-24.4.1"
+      "version": "24.5.1",
+      "gitref": "refs/tags/noto-monthly-release-24.5.1",
+      "revision": "1d9f081ebacd3382a050fdf8166eb491d716c462",
+      "url": "https://github.com/notofonts/notofonts.github.io/releases/tag/noto-monthly-release-24.5.1"
     },
     "tunet-rust-git": {
-      "version": "20240425.100823",
-      "revision": "96a7585c1fc71bca0fef37aa9b65e92a7515a621",
-      "url": "https://github.com/Berrysoft/tunet-rust/commit/96a7585c1fc71bca0fef37aa9b65e92a7515a621"
+      "version": "20240430.141057",
+      "revision": "28e1480b78b045c56a4911ee4160c80fb2138906",
+      "url": "https://github.com/Berrysoft/tunet-rust/commit/28e1480b78b045c56a4911ee4160c80fb2138906"
     }
   }
 }
