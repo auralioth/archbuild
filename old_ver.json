@@ -24,9 +24,9 @@
       "url": "https://github.com/auryouth/winfonts/releases/tag/v1.0.0"
     },
     "dae-git": {
-      "version": "20240502.102441",
-      "revision": "19cacf59001b54cd45f8daee6ed47c8c528f43c5",
-      "url": "https://github.com/daeuniverse/dae/commit/19cacf59001b54cd45f8daee6ed47c8c528f43c5"
+      "version": "20240503.111128",
+      "revision": "3764df2af3b9835b684989fbde5ff1c9dfb9c306",
+      "url": "https://github.com/daeuniverse/dae/commit/3764df2af3b9835b684989fbde5ff1c9dfb9c306"
     },
     "dae-rules-dat": {
       "version": "202405022210",
