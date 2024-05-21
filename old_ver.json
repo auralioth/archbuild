@@ -14,9 +14,9 @@
       "url": "https://github.com/adobe-fonts/source-han-serif/releases/tag/2.002R"
     },
     "clash-meta-alpha-git": {
-      "version": "20240520.114725",
-      "revision": "bd43eca09d4ba82ede087177ade04a91fb0bacb2",
-      "url": "https://github.com/MetaCubeX/mihomo/commit/bd43eca09d4ba82ede087177ade04a91fb0bacb2"
+      "version": "20240521.004536",
+      "revision": "3195c678c7b2118f4ec56a9af352b5722c4cdf5c",
+      "url": "https://github.com/MetaCubeX/mihomo/commit/3195c678c7b2118f4ec56a9af352b5722c4cdf5c"
     },
     "ctex-windows-fonts": {
       "version": "1.0.0",
@@ -24,14 +24,14 @@
       "url": "https://github.com/auryouth/winfonts/releases/tag/v1.0.0"
     },
     "dae-git": {
-      "version": "20240513.104436",
-      "revision": "7acab8f17763b039f31fd69920c3fdc409f1254f",
-      "url": "https://github.com/daeuniverse/dae/commit/7acab8f17763b039f31fd69920c3fdc409f1254f"
+      "version": "20240520.130339",
+      "revision": "ec7cf06de4afa173a46307d5d3095f67e97a1ffd",
+      "url": "https://github.com/daeuniverse/dae/commit/ec7cf06de4afa173a46307d5d3095f67e97a1ffd"
     },
     "dae-rules-dat": {
-      "version": "202405192212",
-      "gitref": "refs/tags/202405192212",
-      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202405192212"
+      "version": "202405202209",
+      "gitref": "refs/tags/202405202209",
+      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202405202209"
     },
     "noto-fonts-all": {
       "version": "24.5.1",
