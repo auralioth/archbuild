@@ -5,9 +5,9 @@
 将以下内容添加到 `/etc/pacman.conf`（我自己个人使用添加在`[core]`之上）:
 
 ```ini
-[auryouth]
+[auralioth]
 SigLevel = Optional TrustAll
-Server = https://github.com/auryouth/archbuild/releases/latest/download
+Server = https://github.com/auralioth/archbuild/releases/latest/download
 ```
 
 ## 实现
