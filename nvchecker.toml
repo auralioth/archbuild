@@ -21,12 +21,6 @@ source = "github"
 github = "MetaCubeX/mihomo"
 branch = "Alpha"
 
-[ctex-windows-fonts]
-source = "github"
-github = "auryouth/winfonts"
-use_latest_release = true
-prefix = "v"
-
 [dae-git]
 source = "github"
 github = "daeuniverse/dae"
