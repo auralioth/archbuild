@@ -14,9 +14,9 @@
       "url": "https://github.com/adobe-fonts/source-han-serif/releases/tag/2.002R"
     },
     "clash-meta-alpha-git": {
-      "version": "20240711.185914",
-      "revision": "fc03bd2f0d3b14ab728d78491597e2b4baf3cc9c",
-      "url": "https://github.com/MetaCubeX/mihomo/commit/fc03bd2f0d3b14ab728d78491597e2b4baf3cc9c"
+      "version": "20240715.051240",
+      "revision": "9e3589d638158dcad6a711803aad271d3338d475",
+      "url": "https://github.com/MetaCubeX/mihomo/commit/9e3589d638158dcad6a711803aad271d3338d475"
     },
     "ctex-windows-fonts": {
       "version": "1.0.0",
@@ -24,9 +24,9 @@
       "url": "https://github.com/auryouth/winfonts/releases/tag/v1.0.0"
     },
     "dae-git": {
-      "version": "20240624.154841",
-      "revision": "64ebfea741f4876ca9e9b0c30ad96fdb4ab07799",
-      "url": "https://github.com/daeuniverse/dae/commit/64ebfea741f4876ca9e9b0c30ad96fdb4ab07799"
+      "version": "20240715.052958",
+      "revision": "58102441094e6a954e59c47f7b25d60825770f27",
+      "url": "https://github.com/daeuniverse/dae/commit/58102441094e6a954e59c47f7b25d60825770f27"
     },
     "dae-rules-dat": {
       "version": "202407142211",
