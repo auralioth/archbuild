@@ -24,14 +24,14 @@
       "url": "https://github.com/auryouth/winfonts/releases/tag/v1.0.0"
     },
     "dae-git": {
-      "version": "20240715.052958",
-      "revision": "58102441094e6a954e59c47f7b25d60825770f27",
-      "url": "https://github.com/daeuniverse/dae/commit/58102441094e6a954e59c47f7b25d60825770f27"
+      "version": "20240715.163828",
+      "revision": "867a247ae42c81a93b901ab6474177306d65289f",
+      "url": "https://github.com/daeuniverse/dae/commit/867a247ae42c81a93b901ab6474177306d65289f"
     },
     "dae-rules-dat": {
-      "version": "202407142211",
-      "gitref": "refs/tags/202407142211",
-      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202407142211"
+      "version": "202407152211",
+      "gitref": "refs/tags/202407152211",
+      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202407152211"
     },
     "noto-fonts-all": {
       "version": "24.7.1",
