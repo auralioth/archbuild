@@ -1,14 +1,14 @@
 _pkgbase=adobe-source-han-serif
 _pkgname=SourceHanSerifOTC
 pkgname=$_pkgbase-otc-fonts
-pkgver=2.002
+pkgver=2.003
 pkgrel=2
 pkgdesc="Adobe Source Han Serif - Pan-CJK OpenType/CFF Collection fonts"
 arch=('any')
 license=('OFL-1.1-RFN')
 url='https://github.com/adobe-fonts/source-han-serif'
 source=("https://github.com/adobe-fonts/source-han-serif/releases/download/${pkgver}R/03_${_pkgname}.zip")
-sha512sums=('dc8984603437a210d1a14a0158202effb976465f13fc10ad597279ee1b271fb76b395efdffec41eb93be03ccd8690eebea8d91988ca4dba3e1177eb354200a9d')
+sha512sums=('024d18c7d3701e6ebfb5f8031fccc95577f6ba6da40b5c3dfc227b7bbc75efd57a13da201df3381664ca7d71d011b03d3f108fc2afa81b0f94423dbf9a366ce2')
 
 package() {
 	cd "$srcdir"
