@@ -29,15 +29,15 @@
       "url": "https://github.com/daeuniverse/dae/commit/4717fa2cdcc5f8925c1759cbabf5cb0e2eaf7ed7"
     },
     "dae-rules-dat": {
-      "version": "202407302209",
-      "gitref": "refs/tags/202407302209",
-      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202407302209"
+      "version": "202407312211",
+      "gitref": "refs/tags/202407312211",
+      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202407312211"
     },
     "noto-fonts-all": {
-      "version": "24.7.1",
-      "gitref": "refs/tags/noto-monthly-release-24.7.1",
-      "revision": "6934f8608dc8235a028a7b4b3d10888df74faf83",
-      "url": "https://github.com/notofonts/notofonts.github.io/releases/tag/noto-monthly-release-24.7.1"
+      "version": "24.8.1",
+      "gitref": "refs/tags/noto-monthly-release-24.8.1",
+      "revision": "e5cbf4c15ada3ab6cfc882c809c7759d54f494c6",
+      "url": "https://github.com/notofonts/notofonts.github.io/releases/tag/noto-monthly-release-24.8.1"
     },
     "tunet-rust-git": {
       "version": "20240726.170956",
