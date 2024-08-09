@@ -40,9 +40,9 @@
       "url": "https://github.com/notofonts/notofonts.github.io/releases/tag/noto-monthly-release-24.8.1"
     },
     "tunet-rust-git": {
-      "version": "20240726.170956",
-      "revision": "0a2f4e028a1bc71ef80aa2ced520ef4c516167c6",
-      "url": "https://github.com/Berrysoft/tunet-rust/commit/0a2f4e028a1bc71ef80aa2ced520ef4c516167c6"
+      "version": "20240809.092117",
+      "revision": "d62710009ab37a9e4dba3584800b86a2a9ee0190",
+      "url": "https://github.com/Berrysoft/tunet-rust/commit/d62710009ab37a9e4dba3584800b86a2a9ee0190"
     }
   }
 }
