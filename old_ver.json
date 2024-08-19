@@ -14,9 +14,9 @@
       "url": "https://github.com/adobe-fonts/source-han-serif/releases/tag/2.003R"
     },
     "clash-meta-alpha-git": {
-      "version": "20240816.061536",
-      "revision": "0793998de885cef77e9eeb455351ad5c2e4112e6",
-      "url": "https://github.com/MetaCubeX/mihomo/commit/0793998de885cef77e9eeb455351ad5c2e4112e6"
+      "version": "20240819.080243",
+      "revision": "c8380335cbdea02965876b443c070ff8cd048956",
+      "url": "https://github.com/MetaCubeX/mihomo/commit/c8380335cbdea02965876b443c070ff8cd048956"
     },
     "ctex-windows-fonts": {
       "version": "1.0.0",
