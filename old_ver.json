@@ -14,9 +14,9 @@
       "url": "https://github.com/adobe-fonts/source-han-serif/releases/tag/2.003R"
     },
     "clash-meta-alpha-git": {
-      "version": "20240831.114209",
-      "revision": "15365f50842516e9bc6d65cccde87784e5ebf269",
-      "url": "https://github.com/MetaCubeX/mihomo/commit/15365f50842516e9bc6d65cccde87784e5ebf269"
+      "version": "20240831.153831",
+      "revision": "802267fb5b0a17bf7915b78abbb80afa407d8815",
+      "url": "https://github.com/MetaCubeX/mihomo/commit/802267fb5b0a17bf7915b78abbb80afa407d8815"
     },
     "ctex-windows-fonts": {
       "version": "1.0.0",
@@ -29,15 +29,15 @@
       "url": "https://github.com/daeuniverse/dae/commit/c5b596c293fdceddc47e4ba6870d058fcbcedc9f"
     },
     "dae-rules-dat": {
-      "version": "202408302211",
-      "gitref": "refs/tags/202408302211",
-      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202408302211"
+      "version": "202408312212",
+      "gitref": "refs/tags/202408312212",
+      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202408312212"
     },
     "noto-fonts-all": {
-      "version": "24.8.1",
-      "gitref": "refs/tags/noto-monthly-release-24.8.1",
-      "revision": "e5cbf4c15ada3ab6cfc882c809c7759d54f494c6",
-      "url": "https://github.com/notofonts/notofonts.github.io/releases/tag/noto-monthly-release-24.8.1"
+      "version": "24.9.1",
+      "gitref": "refs/tags/noto-monthly-release-24.9.1",
+      "revision": "eeb71fdda20300eb0891badeed5e64850e2cbc64",
+      "url": "https://github.com/notofonts/notofonts.github.io/releases/tag/noto-monthly-release-24.9.1"
     },
     "tunet-rust-git": {
       "version": "20240817.104048",
