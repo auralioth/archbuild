@@ -14,9 +14,9 @@
       "url": "https://github.com/adobe-fonts/source-han-serif/releases/tag/2.003R"
     },
     "clash-meta-alpha-git": {
-      "version": "20240910.091313",
-      "revision": "f8557f5fd8e18991a0c9830b4fef08a73fd384a0",
-      "url": "https://github.com/MetaCubeX/mihomo/commit/f8557f5fd8e18991a0c9830b4fef08a73fd384a0"
+      "version": "20240910.134656",
+      "revision": "417d709d605a070d3e59cb7cb04e763eccffa372",
+      "url": "https://github.com/MetaCubeX/mihomo/commit/417d709d605a070d3e59cb7cb04e763eccffa372"
     },
     "ctex-windows-fonts": {
       "version": "1.0.0",
@@ -29,9 +29,9 @@
       "url": "https://github.com/daeuniverse/dae/commit/9f04adfe161e2a4b94e8b0569e8f7e165fc8fa4a"
     },
     "dae-rules-dat": {
-      "version": "202409092211",
-      "gitref": "refs/tags/202409092211",
-      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202409092211"
+      "version": "202409102211",
+      "gitref": "refs/tags/202409102211",
+      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202409102211"
     },
     "noto-fonts-all": {
       "version": "24.9.1",
@@ -40,9 +40,9 @@
       "url": "https://github.com/notofonts/notofonts.github.io/releases/tag/noto-monthly-release-24.9.1"
     },
     "tunet-rust-git": {
-      "version": "20240817.104048",
-      "revision": "5ecd4f6ec5e2eac6a5f40344e8b6eeea4284b440",
-      "url": "https://github.com/Berrysoft/tunet-rust/commit/5ecd4f6ec5e2eac6a5f40344e8b6eeea4284b440"
+      "version": "20240910.151304",
+      "revision": "54a0f304e7409046c5b5741e12a3c51bca378c57",
+      "url": "https://github.com/Berrysoft/tunet-rust/commit/54a0f304e7409046c5b5741e12a3c51bca378c57"
     }
   }
 }
