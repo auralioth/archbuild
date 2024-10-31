@@ -24,14 +24,14 @@
       "url": "https://github.com/auryouth/winfonts/releases/tag/v1.0.0"
     },
     "dae-git": {
-      "version": "20241029.170613",
-      "revision": "382dc5cd5892963ca4129f61570e4217938af4cc",
-      "url": "https://github.com/daeuniverse/dae/commit/382dc5cd5892963ca4129f61570e4217938af4cc"
+      "version": "20241030.142203",
+      "revision": "0e1301b8517d0ef74d03287d74862c3ea4f0545f",
+      "url": "https://github.com/daeuniverse/dae/commit/0e1301b8517d0ef74d03287d74862c3ea4f0545f"
     },
     "dae-rules-dat": {
-      "version": "202410292212",
-      "gitref": "refs/tags/202410292212",
-      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202410292212"
+      "version": "202410302212",
+      "gitref": "refs/tags/202410302212",
+      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202410302212"
     },
     "noto-fonts-all": {
       "version": "24.9.1",
@@ -40,9 +40,9 @@
       "url": "https://github.com/notofonts/notofonts.github.io/releases/tag/noto-monthly-release-24.9.1"
     },
     "tunet-rust-git": {
-      "version": "20241001.085329",
-      "revision": "4dd4859e47aa973dd83c37990f0f7e68a83c70e9",
-      "url": "https://github.com/Berrysoft/tunet-rust/commit/4dd4859e47aa973dd83c37990f0f7e68a83c70e9"
+      "version": "20241030.155351",
+      "revision": "6746ba622d0e30ee0cf54f5ad68e20b9f89537c7",
+      "url": "https://github.com/Berrysoft/tunet-rust/commit/6746ba622d0e30ee0cf54f5ad68e20b9f89537c7"
     }
   }
 }
