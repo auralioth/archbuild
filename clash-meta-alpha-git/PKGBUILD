@@ -1,6 +1,6 @@
 pkgname=clash-meta-alpha-git
 _pkgname=mihomo
-pkgver=0.6.0.r3014.ga86c5628
+pkgver=0.6.0.r3019.gce52c343
 pkgrel=1
 pkgdesc="A rule-based tunnel in Go"
 arch=('x86_64')
