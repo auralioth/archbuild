@@ -14,9 +14,9 @@
       "url": "https://github.com/adobe-fonts/source-han-serif/releases/tag/2.003R"
     },
     "clash-meta-alpha-git": {
-      "version": "20241121.030625",
-      "revision": "462343531e4d3c954bcdc0b189952e4783b998ca",
-      "url": "https://github.com/MetaCubeX/mihomo/commit/462343531e4d3c954bcdc0b189952e4783b998ca"
+      "version": "20241121.145054",
+      "revision": "eb985b002e5aa61c4c2208646f33180c4fc938f9",
+      "url": "https://github.com/MetaCubeX/mihomo/commit/eb985b002e5aa61c4c2208646f33180c4fc938f9"
     },
     "ctex-windows-fonts": {
       "version": "1.0.0",
@@ -29,9 +29,9 @@
       "url": "https://github.com/daeuniverse/dae/commit/53b5fedbc35eb59e450da0891ace3c206203fbad"
     },
     "dae-rules-dat": {
-      "version": "202411202212",
-      "gitref": "refs/tags/202411202212",
-      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202411202212"
+      "version": "202411212212",
+      "gitref": "refs/tags/202411212212",
+      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202411212212"
     },
     "noto-fonts-all": {
       "version": "2024.11.01",
