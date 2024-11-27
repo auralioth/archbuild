@@ -33,6 +33,11 @@
       "gitref": "refs/tags/202411262212",
       "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202411262212"
     },
+    "llvm-git": {
+      "version": "20241127.150941",
+      "revision": "f67ba5855278401728413431216dda5d370ac2e0",
+      "url": "https://github.com/llvm/llvm-project/commit/f67ba5855278401728413431216dda5d370ac2e0"
+    },
     "noto-fonts-all": {
       "version": "2024.11.01",
       "gitref": "refs/tags/noto-monthly-release-2024.11.01",
