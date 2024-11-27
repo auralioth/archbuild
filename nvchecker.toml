@@ -40,3 +40,7 @@ include_regex = 'noto-monthly-release.*'
 [tunet-rust-git]
 source = 'github'
 github = 'Berrysoft/tunet-rust'
+
+[llvm-git]
+source = 'github'
+github = 'llvm/llvm-project'
