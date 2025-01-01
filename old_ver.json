@@ -24,20 +24,20 @@
       "url": "https://github.com/auryouth/winfonts/releases/tag/v1.0.0"
     },
     "dae-git": {
-      "version": "20241230.092926",
-      "revision": "3f4cceb9d426bd4318fb720ccff4edad614c6ea7",
-      "url": "https://github.com/daeuniverse/dae/commit/3f4cceb9d426bd4318fb720ccff4edad614c6ea7"
+      "version": "20241231.172509",
+      "revision": "b3ff5e6c5323a78e9681d82620f41f77f957011a",
+      "url": "https://github.com/daeuniverse/dae/commit/b3ff5e6c5323a78e9681d82620f41f77f957011a"
     },
     "dae-rules-dat": {
-      "version": "202412302211",
-      "gitref": "refs/tags/202412302211",
-      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202412302211"
+      "version": "202412312211",
+      "gitref": "refs/tags/202412312211",
+      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/tag/202412312211"
     },
     "noto-fonts-all": {
-      "version": "2024.12.01",
-      "gitref": "refs/tags/noto-monthly-release-2024.12.01",
-      "revision": "eabc8c16e34b64e6a6c376c5fdb6b203ed3d7cfd",
-      "url": "https://github.com/notofonts/notofonts.github.io/releases/tag/noto-monthly-release-2024.12.01"
+      "version": "2025.01.01",
+      "gitref": "refs/tags/noto-monthly-release-2025.01.01",
+      "revision": "79f1d59698f48bf533ca359388d50aaa23b3edc3",
+      "url": "https://github.com/notofonts/notofonts.github.io/releases/tag/noto-monthly-release-2025.01.01"
     },
     "tunet-rust-git": {
       "version": "20241126.144809",
