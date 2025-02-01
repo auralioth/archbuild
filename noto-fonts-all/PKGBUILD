@@ -1,5 +1,5 @@
 pkgname=noto-fonts-all
-pkgver=2025.01.01
+pkgver=2025.02.01
 pkgrel=1
 pkgdesc='Google Noto TTF fonts(include additional variants)'
 arch=(any)
@@ -8,7 +8,7 @@ license=(custom:SIL)
 provides=('ttf-font' 'noto-fonts')
 conflicts=('noto-fonts')
 source=(https://github.com/notofonts/notofonts.github.io/archive/noto-monthly-release-$pkgver.tar.gz)
-sha256sums=('0224f98c86e1deaa1b2b8b4aaa3e9c63667c020474bb25dd9e5ebe4cd662ad03')
+sha256sums=('00cb71dbc595491f30f55d251b81da55da4c7887f36852e494b46c129958d383')
 
 package() {
 	cd notofonts.github.io-noto-monthly-release-$pkgver
