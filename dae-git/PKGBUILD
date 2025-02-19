@@ -1,6 +1,6 @@
 _pkgname=dae
 pkgname=$_pkgname-git
-pkgver=0.9.0.r16.g3e9082f
+pkgver=0.9.0.r18.ge7c2497
 pkgrel=1
 pkgdesc="A Linux lightweight and high-performance transparent proxy solution based on eBPF."
 arch=(x86_64)
